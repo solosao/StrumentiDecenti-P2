@@ -7,8 +7,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class StrumentiDecenti; }
 QT_END_NAMESPACE
 
-class StrumentiDecenti : public QMainWindow
-{
+class StrumentiDecenti : public QMainWindow {
     Q_OBJECT
 
 public:
