@@ -16,15 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    batteria.cpp \
     componente.cpp \
     main.cpp \
     oggetto.cpp \
-    strumentidecenti.cpp
+    strumentidecenti.cpp \
+    strumento.cpp
 
 HEADERS += \
+    batteria.h \
     componente.h \
     oggetto.h \
-    strumentidecenti.h
+    strumentidecenti.h \
+    strumento.h
 
 FORMS += \
     strumentidecenti.ui
