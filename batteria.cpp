@@ -1,6 +1,5 @@
 #include "batteria.h"
 
-
 Batteria::Batteria(QString nome, double prezzo, bool custodia) : Strumento(nome, prezzo, custodia)
 {
 
@@ -15,9 +14,13 @@ QString Batteria::print()
 {
     QString ret = getNome() + QString::number(getPrice(), 'f', 2);
 
-    for(int i = 0; i < _componenti.size(); ++i) {
-        ret.append(_componenti[i]->print());
+    //iteratori
+    for(auto iter = _componenti.begin(); iter != _componenti.end(); iter++) {
+        ret.append((*iter)->print());
     }
+//    for(int i = 0; i < _componenti.size(); ++i) {
+//        ret.append(_componenti[i]->print());
+//    }
 
     return ret;
 }
