@@ -3,8 +3,6 @@
 
 const QString ChitarraElettrica::tipiAmp[] = {"nessuno", "piccolo", "medio", "grande", "vintage"};
 const QString ChitarraElettrica::tipiPickup[] = {"humbucker", "singlecoil", "p90"};
-const QString ChitarraElettrica::tipiLegno[] = {"acero", "mogano", "frassino", "ciliegio"};
-const QString ChitarraElettrica::tipiCorde[] = {"sottili", "spesse", "premium"};
 
 ChitarraElettrica::ChitarraElettrica(QString nome,
                                      double prezzo,

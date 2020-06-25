@@ -19,6 +19,9 @@ public:
         premium
     };
 
+    static const QString tipiCorde[];
+    static const QString tipiLegno[];
+
     Chitarra(QString nome,
              double prezzo,
              tipoLegno legno,

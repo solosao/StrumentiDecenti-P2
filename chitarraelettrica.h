@@ -22,8 +22,6 @@ public:
 
     static const QString tipiAmp[];
     static const QString tipiPickup[];
-    static const QString tipiCorde[];
-    static const QString tipiLegno[];
 
     ChitarraElettrica(QString nome,
                       double prezzo,

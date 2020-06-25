@@ -4,6 +4,7 @@
 #include "batteria.h"
 #include "chitarraelettrica.h"
 #include <QDebug>
+#include "chitarraacustica.h"
 
 StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new Ui::StrumentiDecenti){
     ui->setupUi(this);
@@ -22,6 +23,9 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
 
     ChitarraElettrica* bellissima = new ChitarraElettrica("straziocaster", 666);
     qDebug()<< bellissima->print();
+
+    ChitarraAcustica* caustic = new ChitarraAcustica("pippocaster", 333);
+    qDebug()<< caustic->print();
 }
 
 StrumentiDecenti::~StrumentiDecenti()

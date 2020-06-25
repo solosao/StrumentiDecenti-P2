@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     batteria.cpp \
     chitarra.cpp \
+    chitarraacustica.cpp \
     chitarraelettrica.cpp \
     componente.cpp \
     main.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 HEADERS += \
     batteria.h \
     chitarra.h \
+    chitarraacustica.h \
     chitarraelettrica.h \
     componente.h \
     oggetto.h \
