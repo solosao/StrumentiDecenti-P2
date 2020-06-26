@@ -11,7 +11,7 @@ public:
     ~Strumento();
     virtual void setCase(bool);
 
-private:
+protected:
     bool _case;
 };
 

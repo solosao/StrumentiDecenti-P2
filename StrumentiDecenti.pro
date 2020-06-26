@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    absynth.cpp \
     batteria.cpp \
     chitarra.cpp \
     chitarraacustica.cpp \
@@ -23,18 +24,29 @@ SOURCES += \
     componente.cpp \
     main.cpp \
     oggetto.cpp \
+    piano.cpp \
     strumentidecenti.cpp \
-    strumento.cpp
+    strumento.cpp \
+    synth.cpp \
+    tastiera.cpp \
+    tastierapesata.cpp \
+    workstation.cpp
 
 HEADERS += \
+    absynth.h \
     batteria.h \
     chitarra.h \
     chitarraacustica.h \
     chitarraelettrica.h \
     componente.h \
     oggetto.h \
+    piano.h \
     strumentidecenti.h \
-    strumento.h
+    strumento.h \
+    synth.h \
+    tastiera.h \
+    tastierapesata.h \
+    workstation.h
 
 FORMS += \
     strumentidecenti.ui
