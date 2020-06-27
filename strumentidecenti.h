@@ -17,8 +17,18 @@ public:
 public slots:
     void on_searchPushButton_pressed();
     void onResetPressed();
+    void on_priceSlider_valueChanged(int);
+    void on_priceSpinBox_valueChanged(int);
+
+    void on_batteriaCheckBox_toggled(bool);
+    void on_chitarraCheckBox_toggled(bool);
+    void on_tastieraCheckBox_toggled(bool);
+
+    void on_addPushButton_pressed();
 
 private:
     Ui::StrumentiDecenti *ui;
+
+    void syncBoxed();
 };
 #endif // STRUMENTIDECENTI_H

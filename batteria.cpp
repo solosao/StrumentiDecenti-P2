@@ -13,6 +13,9 @@ Batteria::Batteria(
 Batteria::~Batteria()
 {
 
+    while(!_componenti.isEmpty()) {
+        delete _componenti.takeFirst();
+    }
 }
 
 QString Batteria::print()

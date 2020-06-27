@@ -36,6 +36,6 @@ double ChitarraAcustica::getPrice()
 
 QString ChitarraAcustica::print()
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2) +Chitarra::tipiCorde[_corde]+Chitarra::tipiLegno[_legno] + tipiCorpi[_corpo];
+    QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[_corde] + Chitarra::tipiLegno[_legno] + tipiCorpi[_corpo];
     return ret;
 }

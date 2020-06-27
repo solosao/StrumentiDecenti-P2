@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     absynth.cpp \
+    adddialog.cpp \
     batteria.cpp \
     chitarra.cpp \
     chitarraacustica.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
 
 HEADERS += \
     absynth.h \
+    adddialog.h \
     batteria.h \
     chitarra.h \
     chitarraacustica.h \
@@ -49,6 +51,7 @@ HEADERS += \
     workstation.h
 
 FORMS += \
+    adddialog.ui \
     strumentidecenti.ui
 
 # Default rules for deployment.
