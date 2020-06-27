@@ -1,14 +1,19 @@
 #include "synth.h"
 
 
-Synth::Synth(QString nome,
-             double prezzo,
-             bool custodia,
-             int tasti,
-             bool gambe,
-             int polifonia,
-             bool analog)
-             : Absynth(nome, prezzo, custodia, tasti, gambe, polifonia), _analog(analog)
+Synth::Synth(
+        QString nome,
+        double prezzo,
+        bool custodia,
+        int tasti,
+        bool gambe,
+        int polifonia,
+        bool analog)
+    : Oggetto(nome, prezzo)
+    , Strumento(nome, prezzo, custodia)
+    , Tastiera(nome, prezzo, custodia, tasti, gambe)
+    , Absynth(nome, prezzo, custodia, tasti, gambe, polifonia)
+    , _analog(analog)
 {
 
 }

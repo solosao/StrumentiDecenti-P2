@@ -4,7 +4,7 @@
 #include "oggetto.h"
 
 
-class Strumento : public Oggetto
+class Strumento : virtual public Oggetto
 {
 public:
     Strumento(QString nome, double prezzo, bool custodia = false);

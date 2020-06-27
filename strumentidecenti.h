@@ -14,6 +14,10 @@ public:
     StrumentiDecenti(QWidget *parent = nullptr);
     ~StrumentiDecenti();
 
+public slots:
+    void on_searchPushButton_pressed();
+    void onResetPressed();
+
 private:
     Ui::StrumentiDecenti *ui;
 };

@@ -1,6 +1,11 @@
 #include "batteria.h"
 
-Batteria::Batteria(QString nome, double prezzo, bool custodia) : Strumento(nome, prezzo, custodia)
+Batteria::Batteria(
+        QString nome,
+        double prezzo,
+        bool custodia)
+    : Oggetto(nome, prezzo)
+    , Strumento(nome, prezzo, custodia)
 {
 
 }

@@ -15,7 +15,14 @@ public:
 
     static const QString tipiPesatura[];
 
-    TastieraPesata(QString nome, double prezzo, bool custodia = false, int tasti = 49, bool gambe = false, bool pedale = false, tipoPesatura pesatura = pesata);
+    TastieraPesata(
+            QString nome,
+            double prezzo,
+            bool custodia = false,
+            int tasti = 49,
+            bool gambe = false,
+            bool pedale = false,
+            tipoPesatura pesatura = pesata);
     ~TastieraPesata();
     void setPedale(bool pedale);
 

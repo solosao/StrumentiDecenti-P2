@@ -1,14 +1,18 @@
 #include "piano.h"
 
 
-Piano::Piano(QString nome,
-             double prezzo,
-             bool custodia,
-             int tasti,
-             bool gambe,
-             bool pedale,
-             TastieraPesata::tipoPesatura pesatura)
-             : TastieraPesata(nome, prezzo, custodia, tasti, gambe, pedale, pesatura)
+Piano::Piano(
+        QString nome,
+        double prezzo,
+        bool custodia,
+        int tasti,
+        bool gambe,
+        bool pedale,
+        TastieraPesata::tipoPesatura pesatura)
+    : Oggetto(nome, prezzo)
+    , Strumento(nome, prezzo, custodia)
+    , Tastiera(nome, prezzo, custodia, tasti, gambe)
+    , TastieraPesata(nome, prezzo, custodia, tasti, gambe, pedale, pesatura)
 {
 
 }

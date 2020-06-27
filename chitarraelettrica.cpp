@@ -4,14 +4,19 @@
 const QString ChitarraElettrica::tipiAmp[] = {"nessuno", "piccolo", "medio", "grande", "vintage"};
 const QString ChitarraElettrica::tipiPickup[] = {"humbucker", "singlecoil", "p90"};
 
-ChitarraElettrica::ChitarraElettrica(QString nome,
-                                     double prezzo,
-                                     Chitarra::tipoLegno legno,
-                                     int scala,
-                                     ChitarraElettrica::tipoPickup pickup,
-                                     ChitarraElettrica::tipoAmp amp,
-                                     Chitarra::tipoCorde corde,
-                                     bool custodia) : Chitarra(nome, prezzo, legno, scala, corde, custodia), _pickup(pickup), _amp(amp)
+ChitarraElettrica::ChitarraElettrica(
+        QString nome,
+        double prezzo,
+        Chitarra::tipoLegno legno,
+        int scala,
+        ChitarraElettrica::tipoPickup pickup,
+        ChitarraElettrica::tipoAmp amp,
+        Chitarra::tipoCorde corde,
+        bool custodia)
+    : Oggetto(nome, prezzo)
+    , Chitarra(nome, prezzo, legno, scala, corde, custodia)
+    , _pickup(pickup)
+    , _amp(amp)
 {
 
 }

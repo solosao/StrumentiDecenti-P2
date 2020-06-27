@@ -2,16 +2,23 @@
 
 const QString tipiCorpi[] = {"acustico", "semiacustico", "classico", "banjo"};
 
-ChitarraAcustica::ChitarraAcustica(QString nome,
-                                   double prezzo,
-                                   tipoLegno legno,
-                                   int scala,
-                                   tipoCorpo corpo,
-                                   bool amplificata,
-                                   bool eq,
-                                   bool cutaway,
-                                   tipoCorde corde,
-                                   bool custodia):  Chitarra(nome, prezzo, legno, scala, corde, custodia), _corpo(corpo), _amplificata(amplificata), _eq(eq), _cutaway(cutaway)
+ChitarraAcustica::ChitarraAcustica(
+        QString nome,
+        double prezzo,
+        tipoLegno legno,
+        int scala,
+        tipoCorpo corpo,
+        bool amplificata,
+        bool eq,
+        bool cutaway,
+        tipoCorde corde,
+        bool custodia)
+    : Oggetto(nome, prezzo)
+    , Chitarra(nome, prezzo, legno, scala, corde, custodia)
+    , _corpo(corpo)
+    , _amplificata(amplificata)
+    , _eq(eq)
+    , _cutaway(cutaway)
 {
 
 }
@@ -23,7 +30,7 @@ ChitarraAcustica::~ChitarraAcustica()
 
 double ChitarraAcustica::getPrice()
 {
-    int ret = _prezzo;
+//    int ret = _prezzo;
     return _prezzo + _amplificata*50 + _eq*20;
 }
 

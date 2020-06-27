@@ -1,6 +1,11 @@
 #include "componente.h"
 
-Componente::Componente(QString nome, double prezzo, Componente::tipoScelta tipo):Oggetto(nome, prezzo), _tipo(tipo){
+Componente::Componente(
+        QString nome,
+        double prezzo,
+        Componente::tipoScelta tipo)
+    : Oggetto(nome, prezzo)
+    , _tipo(tipo){
 
 }
 

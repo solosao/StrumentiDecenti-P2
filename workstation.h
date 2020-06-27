@@ -3,8 +3,9 @@
 
 #include "tastierapesata.h"
 #include "absynth.h"
+#include "tastiera.h"
 
-class Workstation : public TastieraPesata, Absynth
+class Workstation : virtual public TastieraPesata, virtual public Absynth
 {
 public:
     Workstation(QString nome,

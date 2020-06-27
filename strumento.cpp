@@ -1,6 +1,11 @@
 #include "strumento.h"
 
-Strumento::Strumento(QString nome, double prezzo, bool custodia) : Oggetto(nome, prezzo), _case(custodia)
+Strumento::Strumento(
+        QString nome,
+        double prezzo,
+        bool custodia)
+    : Oggetto(nome, prezzo)
+    , _case(custodia)
 {
 
 }

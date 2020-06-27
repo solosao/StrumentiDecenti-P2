@@ -4,7 +4,7 @@
 #include "strumento.h"
 
 
-class Tastiera : public Strumento
+class Tastiera : virtual public Strumento
 {
 public:
     Tastiera(QString nome, double prezzo, bool custodia = false, int tasti = 49, bool gambe = false);

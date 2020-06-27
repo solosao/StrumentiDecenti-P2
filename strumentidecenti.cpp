@@ -10,6 +10,9 @@
 StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new Ui::StrumentiDecenti){
     ui->setupUi(this);
 
+    //connessione manuale al metodo da chiamare
+    connect(ui->resetPushButton, &QPushButton::pressed, this, &StrumentiDecenti::onResetPressed);
+
     Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
     Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
 
@@ -36,5 +39,17 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
 StrumentiDecenti::~StrumentiDecenti()
 {
     delete ui;
+}
+
+//connessione automatica
+void StrumentiDecenti::on_searchPushButton_pressed()
+{
+    qDebug()<<Q_FUNC_INFO;
+}
+
+//connessione manuale ->
+void StrumentiDecenti::onResetPressed()
+{
+    qDebug()<<Q_FUNC_INFO;
 }
 
