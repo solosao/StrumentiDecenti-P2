@@ -144,6 +144,13 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
+             <widget class="QCheckBox" name="checkBox">
+              <property name="text">
+               <string>CheckBox</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QCheckBox" name="checkBox_4">
               <property name="text">
                <string>CheckBox</string>

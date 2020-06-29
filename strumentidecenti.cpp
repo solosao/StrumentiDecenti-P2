@@ -53,6 +53,11 @@ void StrumentiDecenti::on_searchPushButton_pressed()
     qDebug()<<Q_FUNC_INFO;
 }
 
+void StrumentiDecenti::on_chitarraRadioButton_selected()
+{
+    qDebug()<<Q_FUNC_INFO;
+}
+
 //connessione manuale ->
 void StrumentiDecenti::onResetPressed()
 {

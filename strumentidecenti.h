@@ -25,6 +25,7 @@ public slots:
     void on_tastieraCheckBox_toggled(bool);
 
     void on_addPushButton_pressed();
+    void on_chitarraRadioButton_selected();
 
 private:
     Ui::StrumentiDecenti *ui;
