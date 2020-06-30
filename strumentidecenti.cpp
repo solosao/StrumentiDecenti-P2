@@ -4,6 +4,7 @@
 #include "batteria.h"
 #include "chitarraelettrica.h"
 #include <QDebug>
+#include <QPair>
 #include "chitarraacustica.h"
 #include "piano.h"
 #include "adddialog.h"
@@ -17,6 +18,8 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     //inizializzo view
     syncBoxed();
 
+
+    /*
     Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
     Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
 
@@ -37,6 +40,9 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
 
     Piano* kosendorker = new Piano("emporial", 1000, false, 88, true);
     qDebug()<< kosendorker->print();
+
+    */
+
     //price : 1130
 
     //ci sarà un QList di oggetti
@@ -49,11 +55,6 @@ StrumentiDecenti::~StrumentiDecenti()
 
 //connessione automatica
 void StrumentiDecenti::on_searchPushButton_pressed()
-{
-    qDebug()<<Q_FUNC_INFO;
-}
-
-void StrumentiDecenti::on_chitarraRadioButton_selected()
 {
     qDebug()<<Q_FUNC_INFO;
 }
@@ -109,7 +110,14 @@ void StrumentiDecenti::on_addPushButton_pressed()
 
     if(dialog.exec() == QDialog::Accepted) {
         qDebug()<<"OK";
-        qDebug()<<dialog.buildItem()->print();
+        Oggetto* ret = dialog.buildItem();
+
+        list.append(ret);
+
+        foreach(auto &x,list)
+            qDebug()<<x->print();
+
+//        ui->strumentoTableView.
     }
 }
 

@@ -199,7 +199,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_7">
       <item>
-       <widget class="QTableView" name="tableView"/>
+       <widget class="QTableView" name="strumentoTableView"/>
       </item>
       <item>
        <widget class="QPushButton" name="addPushButton">

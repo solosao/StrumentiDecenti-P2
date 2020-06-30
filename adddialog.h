@@ -23,8 +23,17 @@ public:
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);
 
+private slots:
+    void on_batteriaRadioButton_clicked();
+
+    void on_chitarraRadioButton_clicked();
+
+    void on_tastieraRadioButton_clicked();
+
 private:
     Ui::AddDialog *ui;
+
+    void handleRadioButtonStrumento();
 
 };
 
