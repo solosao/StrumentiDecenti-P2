@@ -19,3 +19,8 @@ void Strumento::setCase(bool custodia)
 {
     _case = custodia;
 }
+
+bool Strumento::getCase() const
+{
+    return _case;
+}

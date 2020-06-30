@@ -8,8 +8,13 @@ Oggetto::~Oggetto() {
 
 }
 
-QString Oggetto::getNome() {
+QString Oggetto::getNome() const{
     return _nome;
+}
+
+double Oggetto::getInitPrice() const
+{
+    return _prezzo;
 }
 
 double Oggetto::getPrice() {

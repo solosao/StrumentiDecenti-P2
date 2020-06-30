@@ -8,7 +8,7 @@ ChitarraAcustica::ChitarraAcustica(
         tipoLegno legno,
         int scala,
         tipoCorpo corpo,
-        bool amplificata,
+        bool tuner,
         bool eq,
         bool cutaway,
         tipoCorde corde,
@@ -16,7 +16,7 @@ ChitarraAcustica::ChitarraAcustica(
     : Oggetto(nome, prezzo)
     , Chitarra(nome, prezzo, legno, scala, corde, custodia)
     , _corpo(corpo)
-    , _amplificata(amplificata)
+    , _tuner(tuner)
     , _eq(eq)
     , _cutaway(cutaway)
 {
@@ -28,14 +28,34 @@ ChitarraAcustica::~ChitarraAcustica()
 
 }
 
+ChitarraAcustica::tipoCorpo ChitarraAcustica::getCorpo() const
+{
+    return _corpo;
+}
+
+bool ChitarraAcustica::getTuner() const
+{
+    return _tuner;
+}
+
+bool ChitarraAcustica::getEq() const
+{
+    return _eq;
+}
+
+bool ChitarraAcustica::getCutaway() const
+{
+    return _cutaway;
+}
+
 double ChitarraAcustica::getPrice()
 {
 //    int ret = _prezzo;
-    return _prezzo + _amplificata*50 + _eq*20;
+    return getInitPrice() + getTuner()*50 + getEq()*20;
 }
 
 QString ChitarraAcustica::print()
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[_corde] + Chitarra::tipiLegno[_legno] + tipiCorpi[_corpo];
+    QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpi[getCorpo()];
     return ret;
 }

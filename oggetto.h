@@ -8,12 +8,14 @@ public:
     Oggetto(QString nome, double prezzo);
     virtual ~Oggetto();
 
-    // metodi poliformi
-    virtual QString print() = 0;
-    virtual QString getNome();
-    virtual double getPrice();
+    QString getNome() const;
 
-protected:
+    // metodi polimorfi
+    virtual QString print() = 0;
+    virtual double getPrice() = 0;
+    double getInitPrice() const;
+
+private:
     QString _nome;
     double _prezzo;
 

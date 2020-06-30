@@ -35,7 +35,7 @@ QString Batteria::print()
 
 double Batteria::getPrice()
 {
-    double price = _prezzo;
+    double price = getInitPrice();
     for(auto iter = _componenti.begin(); iter != _componenti.end(); iter++) {
         price += (*iter)->getPrice();
     }

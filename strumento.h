@@ -10,8 +10,9 @@ public:
     Strumento(QString nome, double prezzo, bool custodia = false);
     ~Strumento();
     virtual void setCase(bool);
+    bool getCase() const;
 
-protected:
+private:
     bool _case;
 };
 

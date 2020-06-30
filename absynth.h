@@ -14,7 +14,9 @@ public:
             int polifonia = 1);
     ~Absynth();
 
-protected:
+    int getPolifonia() const;
+
+private:
     int _polifonia;
 };
 

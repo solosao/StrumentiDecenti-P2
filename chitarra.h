@@ -30,9 +30,14 @@ public:
              bool custodia = false);
 
     ~Chitarra();
+
+    tipoLegno getLegno() const;
+    int getScala() const;
+    tipoCorde getCorde() const;
+
     virtual void setCorde(tipoCorde);
 
-protected:
+private:
     const tipoLegno _legno;
     const int _scala;
     tipoCorde _corde;

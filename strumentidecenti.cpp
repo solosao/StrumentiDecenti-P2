@@ -8,6 +8,7 @@
 #include "chitarraacustica.h"
 #include "piano.h"
 #include "adddialog.h"
+#include "QVector"
 
 StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new Ui::StrumentiDecenti){
     ui->setupUi(this);
@@ -18,8 +19,13 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     //inizializzo view
     syncBoxed();
 
+<<<<<<< HEAD
 
     /*
+=======
+    QVector<Strumento*> magazzino;
+
+>>>>>>> da437703032751b3497380d71c44731b1fce9fe5
     Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
     Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
 
@@ -35,8 +41,12 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     ChitarraElettrica* bellissima = new ChitarraElettrica("straziocaster", 666);
     qDebug()<< bellissima->print();
 
+    magazzino.push_back(bellissima);
+
     ChitarraAcustica* caustic = new ChitarraAcustica("pippocaster", 333);
     qDebug()<< caustic->print();
+
+    magazzino.push_back(caustic);
 
     Piano* kosendorker = new Piano("emporial", 1000, false, 88, true);
     qDebug()<< kosendorker->print();
@@ -44,6 +54,11 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     */
 
     //price : 1130
+    magazzino.push_back(kosendorker);
+
+    for(auto iter = magazzino.begin(); iter != magazzino.end(); iter++) {
+        qDebug()<<(*iter)->print();
+    }
 
     //ci sarà un QList di oggetti
 }

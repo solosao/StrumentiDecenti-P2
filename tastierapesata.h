@@ -24,6 +24,9 @@ public:
             bool pedale = false,
             tipoPesatura pesatura = pesata);
     ~TastieraPesata();
+
+    bool getPedale() const;
+    tipoPesatura getPesatura() const;
     void setPedale(bool pedale);
 
 protected:

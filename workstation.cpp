@@ -25,7 +25,7 @@ Workstation::~Workstation()
 
 double Workstation::getPrice()
 {
-    return _prezzo + 25*_gambe+20*_pedale+100*_case;
+    return dynamic_cast<Oggetto*>(this)->getPrice() + 25*getGambe()+20*getPedale()+100*getCase();
 //    return 0;
 }
 
