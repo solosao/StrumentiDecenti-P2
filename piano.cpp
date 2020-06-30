@@ -24,13 +24,13 @@ Piano::~Piano()
 
 QString Piano::print()
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2)+ QString::number(_tasti) + tipiPesatura[_pesatura];
-    if(_pedale) ret.append("pedale");
-    if(_gambe) ret.append("gambe");
+    QString ret = getNome() + QString::number(getPrice(), 'f', 2)+ QString::number(getTasti()) + tipiPesatura[getPesatura()];
+    if(getPedale()) ret.append("pedale");
+    if(getGambe()) ret.append("gambe");
     return ret;
 }
 
 double Piano::getPrice()
 {
-    return _prezzo+_pedale*30+_gambe*100;
+    return getInitPrice()+getPedale()*30+getGambe()*100;
 }

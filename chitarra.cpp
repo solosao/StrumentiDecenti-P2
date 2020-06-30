@@ -24,6 +24,21 @@ Chitarra::~Chitarra()
 
 }
 
+Chitarra::tipoLegno Chitarra::getLegno() const
+{
+    return _legno;
+}
+
+int Chitarra::getScala() const
+{
+    return _scala;
+}
+
+Chitarra::tipoCorde Chitarra::getCorde() const
+{
+    return  _corde;
+}
+
 void Chitarra::setCorde(Chitarra::tipoCorde corde)
 {
     _corde = corde;

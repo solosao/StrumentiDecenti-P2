@@ -25,3 +25,8 @@ QString Componente::print() { //metodo polimorfo
 
     return getNome() + QString::number(getPrice(), 'f', 2) + tipo;
 }
+
+double Componente::getPrice()
+{
+    return getInitPrice();
+}

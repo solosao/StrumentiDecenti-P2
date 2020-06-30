@@ -20,12 +20,17 @@ public:
                      tipoLegno legno = mogano,
                      int scala = 648,
                      tipoCorpo corpo = acustico,
-                     bool amplificata = false,
+                     bool tuner = false,
                      bool eq = false,
                      bool cutaway = false,
                      tipoCorde corde = sottili,
                      bool custodia = false);
     ~ChitarraAcustica();
+
+    tipoCorpo getCorpo() const;
+    bool getTuner() const;
+    bool getEq() const;
+    bool getCutaway() const;
 
     virtual double getPrice();
     virtual QString print();
@@ -33,7 +38,7 @@ public:
 
 private:
     const tipoCorpo _corpo;
-    const bool _amplificata;
+    const bool _tuner;
     const bool _eq;
     const bool _cutaway;
 };

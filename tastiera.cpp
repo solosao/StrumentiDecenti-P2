@@ -20,6 +20,16 @@ Tastiera::~Tastiera()
 
 }
 
+int Tastiera::getTasti() const
+{
+    return _tasti;
+}
+
+bool Tastiera::getGambe() const
+{
+    return _gambe;
+}
+
 void Tastiera::setGambe(bool gambe)
 {
     _gambe = gambe;

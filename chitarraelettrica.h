@@ -33,6 +33,10 @@ public:
                       bool custodia = false);
 
     ~ChitarraElettrica();
+
+    tipoAmp getAmp() const;
+    tipoPickup getPickup() const;
+
     void setAmp(tipoAmp);
     virtual double getPrice();
     virtual QString print();

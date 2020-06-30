@@ -24,6 +24,16 @@ TastieraPesata::~TastieraPesata()
 
 }
 
+bool TastieraPesata::getPedale() const
+{
+    return _pedale;
+}
+
+TastieraPesata::tipoPesatura TastieraPesata::getPesatura() const
+{
+    return _pesatura;
+}
+
 void TastieraPesata::setPedale(bool pedale)
 {
     _pedale = pedale;

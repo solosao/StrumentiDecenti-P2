@@ -19,3 +19,8 @@ Absynth::~Absynth()
 {
 
 }
+
+int Absynth::getPolifonia() const
+{
+    return _polifonia;
+}

@@ -23,16 +23,21 @@ Synth::~Synth()
 
 }
 
+bool Synth::getAnalog() const
+{
+    return _analog;
+}
+
 QString Synth::print()
 {
-    QString ret = getNome()+QString::number(getPrice(), 'f', 2)+ QString::number(_tasti)+ QString::number(_polifonia);
-    if(_case) ret.append("case");
-    if(_gambe) ret.append("gambe");
-    if(_analog) ret.append("analog");
+    QString ret = getNome()+QString::number(getPrice(), 'f', 2)+ QString::number(getTasti())+ QString::number(getPolifonia());
+    if(getCase()) ret.append("case");
+    if(getGambe()) ret.append("gambe");
+    if(getAnalog()) ret.append("analog");
     return ret;
 }
 
 double Synth::getPrice()
 {
-    return _prezzo + _gambe*25 + _case*50;
+    return getInitPrice() + getGambe()*25 + getGambe()*50;
 }
