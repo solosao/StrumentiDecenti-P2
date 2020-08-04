@@ -2,6 +2,8 @@
 #define STRUMENTIDECENTI_H
 
 #include <QMainWindow>
+#include <QList>
+#include "strumento.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StrumentiDecenti; }
@@ -25,11 +27,11 @@ public slots:
     void on_tastieraCheckBox_toggled(bool);
 
     void on_addPushButton_pressed();
-    void on_chitarraRadioButton_selected();
 
 private:
     Ui::StrumentiDecenti *ui;
-
     void syncBoxed();
+
+    QList<Oggetto*> list;
 };
 #endif // STRUMENTIDECENTI_H

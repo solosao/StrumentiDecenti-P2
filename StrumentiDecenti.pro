@@ -28,6 +28,7 @@ SOURCES += \
     piano.cpp \
     strumentidecenti.cpp \
     strumento.cpp \
+    strumentowidget.cpp \
     synth.cpp \
     tastiera.cpp \
     tastierapesata.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     piano.h \
     strumentidecenti.h \
     strumento.h \
+    strumentowidget.h \
     synth.h \
     tastiera.h \
     tastierapesata.h \
@@ -52,7 +54,8 @@ HEADERS += \
 
 FORMS += \
     adddialog.ui \
-    strumentidecenti.ui
+    strumentidecenti.ui \
+    strumentowidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

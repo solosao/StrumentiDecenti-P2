@@ -4,10 +4,13 @@
 #include "batteria.h"
 #include "chitarraelettrica.h"
 #include <QDebug>
+#include <QPair>
 #include "chitarraacustica.h"
 #include "piano.h"
 #include "adddialog.h"
 #include "QVector"
+
+#include "strumentowidget.h"
 
 StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new Ui::StrumentiDecenti){
     ui->setupUi(this);
@@ -18,7 +21,9 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     //inizializzo view
     syncBoxed();
 
+    /*
     QVector<Strumento*> magazzino;
+
 
     Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
     Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
@@ -44,12 +49,16 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
 
     Piano* kosendorker = new Piano("emporial", 1000, false, 88, true);
     qDebug()<< kosendorker->print();
+
+
+
     //price : 1130
     magazzino.push_back(kosendorker);
 
     for(auto iter = magazzino.begin(); iter != magazzino.end(); iter++) {
         qDebug()<<(*iter)->print();
     }
+    */
 
     //ci sarà un QList di oggetti
 }
@@ -61,11 +70,6 @@ StrumentiDecenti::~StrumentiDecenti()
 
 //connessione automatica
 void StrumentiDecenti::on_searchPushButton_pressed()
-{
-    qDebug()<<Q_FUNC_INFO;
-}
-
-void StrumentiDecenti::on_chitarraRadioButton_selected()
 {
     qDebug()<<Q_FUNC_INFO;
 }
@@ -121,7 +125,27 @@ void StrumentiDecenti::on_addPushButton_pressed()
 
     if(dialog.exec() == QDialog::Accepted) {
         qDebug()<<"OK";
-        qDebug()<<dialog.buildItem()->print();
+        Oggetto* ret = dialog.buildItem();
+
+        list.append(ret);
+
+        QWidget *widget = new QWidget();
+        ui->scrollArea->setWidget( widget );
+        ui->scrollArea->setWidgetResizable(true);
+
+        QVBoxLayout *layout = new QVBoxLayout();
+        widget->setLayout( layout );
+
+        foreach(auto &x,list) {
+            qDebug()<<x->print();
+            StrumentoWidget* nuovoOggetto = new StrumentoWidget(x, this);
+            layout->addWidget( nuovoOggetto );
+        }
+
+        //add spacer
+        QSpacerItem* verticalSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        layout->addItem(verticalSpacer);
     }
 }
 

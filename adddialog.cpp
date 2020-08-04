@@ -46,3 +46,26 @@ void AddDialog::on_buttonBox_clicked(QAbstractButton * button)
         break;
     }
 }
+
+
+void AddDialog::on_batteriaRadioButton_clicked()
+{
+    handleRadioButtonStrumento();
+}
+
+void AddDialog::on_chitarraRadioButton_clicked()
+{
+    handleRadioButtonStrumento();
+}
+
+void AddDialog::on_tastieraRadioButton_clicked()
+{
+    handleRadioButtonStrumento();
+}
+
+void AddDialog::handleRadioButtonStrumento()
+{
+    ui->batteriaGroupBox->setVisible(ui->batteriaRadioButton->isChecked());
+    ui->chitarraGroupBox->setVisible(ui->chitarraRadioButton->isChecked());
+
+}
