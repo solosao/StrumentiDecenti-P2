@@ -10,6 +10,8 @@
 #include "adddialog.h"
 #include "QVector"
 
+#include "strumentowidget.h"
+
 StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new Ui::StrumentiDecenti){
     ui->setupUi(this);
 
@@ -19,13 +21,10 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     //inizializzo view
     syncBoxed();
 
-<<<<<<< HEAD
-
     /*
-=======
     QVector<Strumento*> magazzino;
 
->>>>>>> da437703032751b3497380d71c44731b1fce9fe5
+
     Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
     Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
 
@@ -51,7 +50,7 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     Piano* kosendorker = new Piano("emporial", 1000, false, 88, true);
     qDebug()<< kosendorker->print();
 
-    */
+
 
     //price : 1130
     magazzino.push_back(kosendorker);
@@ -59,6 +58,7 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     for(auto iter = magazzino.begin(); iter != magazzino.end(); iter++) {
         qDebug()<<(*iter)->print();
     }
+    */
 
     //ci sarà un QList di oggetti
 }
@@ -129,10 +129,23 @@ void StrumentiDecenti::on_addPushButton_pressed()
 
         list.append(ret);
 
-        foreach(auto &x,list)
-            qDebug()<<x->print();
+        QWidget *widget = new QWidget();
+        ui->scrollArea->setWidget( widget );
+        ui->scrollArea->setWidgetResizable(true);
 
-//        ui->strumentoTableView.
+        QVBoxLayout *layout = new QVBoxLayout();
+        widget->setLayout( layout );
+
+        foreach(auto &x,list) {
+            qDebug()<<x->print();
+            StrumentoWidget* nuovoOggetto = new StrumentoWidget(x, this);
+            layout->addWidget( nuovoOggetto );
+        }
+
+        //add spacer
+        QSpacerItem* verticalSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        layout->addItem(verticalSpacer);
     }
 }
 
