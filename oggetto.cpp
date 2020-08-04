@@ -17,6 +17,3 @@ double Oggetto::getInitPrice() const
     return _prezzo;
 }
 
-double Oggetto::getPrice() {
-    return _prezzo;
-}

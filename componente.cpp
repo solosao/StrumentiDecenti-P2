@@ -14,7 +14,8 @@ Componente::~Componente()
 
 }
 
-QString Componente::print() { //metodo polimorfo
+QString Componente::print() const
+{ //metodo polimorfo
 
     QString tipo;
 
@@ -26,7 +27,7 @@ QString Componente::print() { //metodo polimorfo
     return getNome() + QString::number(getPrice(), 'f', 2) + tipo;
 }
 
-double Componente::getPrice()
+double Componente::getPrice() const
 {
     return getInitPrice();
 }

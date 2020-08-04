@@ -41,12 +41,12 @@ void ChitarraElettrica::setAmp(ChitarraElettrica::tipoAmp amp)
     _amp = amp;
 }
 
-double ChitarraElettrica::getPrice()
+double ChitarraElettrica::getPrice() const
 {
     return getInitPrice()+getPickup()*30+getAmp()*200;
 }
 
-QString ChitarraElettrica::print()
+QString ChitarraElettrica::print() const
 {
     QString ret = getNome() + QString::number(getPrice(), 'f', 2) + tipiAmp[getAmp()]+tipiPickup[getPickup()]+tipiCorde[getCorde()]+tipiLegno[getLegno()];
     return ret;

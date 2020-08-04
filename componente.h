@@ -13,8 +13,8 @@ public:
     Componente(QString, double, tipoScelta);
     ~Componente();
 
-    virtual QString print() override;
-    double getPrice() override;
+    QString print() const override;
+    double getPrice() const override;
 
 
 private:

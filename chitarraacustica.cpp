@@ -48,13 +48,13 @@ bool ChitarraAcustica::getCutaway() const
     return _cutaway;
 }
 
-double ChitarraAcustica::getPrice()
+double ChitarraAcustica::getPrice() const
 {
 //    int ret = _prezzo;
     return getInitPrice() + getTuner()*50 + getEq()*20;
 }
 
-QString ChitarraAcustica::print()
+QString ChitarraAcustica::print() const
 {
     QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpi[getCorpo()];
     return ret;

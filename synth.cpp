@@ -28,7 +28,7 @@ bool Synth::getAnalog() const
     return _analog;
 }
 
-QString Synth::print()
+QString Synth::print() const
 {
     QString ret = getNome()+QString::number(getPrice(), 'f', 2)+ QString::number(getTasti())+ QString::number(getPolifonia());
     if(getCase()) ret.append("case");
@@ -37,7 +37,7 @@ QString Synth::print()
     return ret;
 }
 
-double Synth::getPrice()
+double Synth::getPrice() const
 {
     return getInitPrice() + getGambe()*25 + getGambe()*50;
 }

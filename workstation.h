@@ -20,8 +20,8 @@ public:
 
     ~Workstation();
 
-    virtual double getPrice();
-    virtual QString print();
+    double getPrice() const override;
+    QString print() const override;
 };
 
 #endif // WORKSTATION_H

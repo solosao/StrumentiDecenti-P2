@@ -11,8 +11,8 @@ public:
 
     bool getAnalog() const;
 
-    virtual QString print();
-    virtual double getPrice();
+    QString print() const override;
+    double getPrice() const override;
 
 private:
     const bool _analog;

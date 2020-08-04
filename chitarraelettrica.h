@@ -38,8 +38,8 @@ public:
     tipoPickup getPickup() const;
 
     void setAmp(tipoAmp);
-    virtual double getPrice();
-    virtual QString print();
+    double getPrice() const override;
+    QString print() const override;
 
 private:
     const tipoPickup _pickup;
