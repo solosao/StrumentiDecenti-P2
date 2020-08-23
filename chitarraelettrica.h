@@ -20,8 +20,10 @@ public:
         vintage
     };
 
-    static const QString tipiAmp[];
-    static const QString tipiPickup[];
+    static QStringList tipiAmp;
+    static QStringList tipiPickup;
+
+    static void initChitarraElettrica();
 
     ChitarraElettrica(QString nome,
                       double prezzo,

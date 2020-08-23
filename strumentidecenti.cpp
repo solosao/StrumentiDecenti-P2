@@ -20,47 +20,6 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
 
     //inizializzo view
     syncBoxed();
-
-    /*
-    QVector<Strumento*> magazzino;
-
-
-    Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
-    Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
-
-    Batteria vera("Nintendo", 3);
-    vera.addComponente(prova);
-    vera.addComponente(tamb);
-
-    qDebug()<< vera.print();
-
-    vera.removeComponente(1);
-    qDebug()<< vera.print();
-
-    ChitarraElettrica* bellissima = new ChitarraElettrica("straziocaster", 666);
-    qDebug()<< bellissima->print();
-
-    magazzino.push_back(bellissima);
-
-    ChitarraAcustica* caustic = new ChitarraAcustica("pippocaster", 333);
-    qDebug()<< caustic->print();
-
-    magazzino.push_back(caustic);
-
-    Piano* kosendorker = new Piano("emporial", 1000, false, 88, true);
-    qDebug()<< kosendorker->print();
-
-
-
-    //price : 1130
-    magazzino.push_back(kosendorker);
-
-    for(auto iter = magazzino.begin(); iter != magazzino.end(); iter++) {
-        qDebug()<<(*iter)->print();
-    }
-    */
-
-    //ci sarà un QList di oggetti
 }
 
 StrumentiDecenti::~StrumentiDecenti()

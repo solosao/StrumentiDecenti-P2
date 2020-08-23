@@ -3,8 +3,11 @@
 
 #include <QAbstractButton>
 #include <QDialog>
+#include <QList>
+#include <QVBoxLayout>
 
 #include "oggetto.h"
+#include "componente.h"
 
 namespace Ui {
 class AddDialog;
@@ -22,11 +25,14 @@ public:
 
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);
+    void on_addComponentePushButton_pressed();
 
 private slots:
     void on_batteriaRadioButton_clicked();
 
     void on_chitarraRadioButton_clicked();
+    void on_acusticaRadioButton_clicked();
+    void on_elettricaRadioButton_clicked();
 
     void on_tastieraRadioButton_clicked();
 
@@ -34,6 +40,11 @@ private:
     Ui::AddDialog *ui;
 
     void handleRadioButtonStrumento();
+    void handleTipoChitarra();
+
+    unsigned int componenteList = 0;
+
+    QVBoxLayout* layoutScroll;
 
 };
 
