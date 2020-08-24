@@ -51,3 +51,8 @@ QString ChitarraElettrica::print() const
     QString ret = getNome() + QString::number(getPrice(), 'f', 2) + tipiAmp[getAmp()]+tipiPickup[getPickup()]+tipiCorde[getCorde()]+tipiLegno[getLegno()];
     return ret;
 }
+
+QString ChitarraElettrica::getLabels() const
+{
+    return "Custodia|Legno|Scala|Pickup|Amp|Corde";
+}

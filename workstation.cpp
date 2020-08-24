@@ -33,3 +33,8 @@ QString Workstation::print() const
 {
     return QString(Q_FUNC_INFO);
 }
+
+QString Workstation::getLabels() const
+{
+    return "Custodia|Tasti|Gambe|Pedale|Pesatura|Polifonia";
+}

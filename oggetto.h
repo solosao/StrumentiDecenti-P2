@@ -13,6 +13,7 @@ public:
     // metodi polimorfi
     virtual QString print() const = 0;
     virtual double getPrice() const = 0;
+    virtual QString getLabels() const = 0;
     double getInitPrice() const;
 
 private:

@@ -59,3 +59,8 @@ QString ChitarraAcustica::print() const
     QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpi[getCorpo()];
     return ret;
 }
+
+QString ChitarraAcustica::getLabels() const
+{
+    return "Custodia|Legno|Scala|Corpo|Tuner|Eq|Cutaway|Corde";
+}

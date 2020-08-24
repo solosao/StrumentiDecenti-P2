@@ -31,3 +31,8 @@ double Componente::getPrice() const
 {
     return getInitPrice();
 }
+
+QString Componente::getLabels() const
+{
+    return "Tipo";
+}

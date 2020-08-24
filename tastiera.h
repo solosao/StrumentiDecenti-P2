@@ -16,7 +16,7 @@ public:
     void setGambe(bool gambe);
 
 
-protected:
+private:
     const int _tasti;
     bool _gambe;
 };

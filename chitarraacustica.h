@@ -34,6 +34,7 @@ public:
 
     double getPrice() const override;
     QString print() const override;
+    QString getLabels() const override;
 
 
 private:

@@ -23,6 +23,7 @@ SOURCES += \
     chitarraacustica.cpp \
     chitarraelettrica.cpp \
     componente.cpp \
+    detaildialog.cpp \
     main.cpp \
     oggetto.cpp \
     piano.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     chitarraacustica.h \
     chitarraelettrica.h \
     componente.h \
+    detaildialog.h \
     oggetto.h \
     piano.h \
     strumentidecenti.h \
@@ -54,6 +56,7 @@ HEADERS += \
 
 FORMS += \
     adddialog.ui \
+    detaildialog.ui \
     strumentidecenti.ui \
     strumentowidget.ui
 

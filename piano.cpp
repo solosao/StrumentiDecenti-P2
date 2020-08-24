@@ -34,3 +34,8 @@ double Piano::getPrice() const
 {
     return getInitPrice()+getPedale()*30+getGambe()*100;
 }
+
+QString Piano::getLabels() const
+{
+    return "Custodia|Tasti|Gambe|Pedale|Pesatura";
+}

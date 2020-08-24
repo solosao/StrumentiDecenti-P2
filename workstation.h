@@ -15,13 +15,14 @@ public:
             int tasti = 73,
             bool gambe = false,
             bool pedale = false,
-            tipoPesatura pesatura = semipasata,
+            tipoPesatura pesatura = semipesata,
             int polifonia = 16);
 
     ~Workstation();
 
     double getPrice() const override;
     QString print() const override;
+    QString getLabels() const override;
 };
 
 #endif // WORKSTATION_H

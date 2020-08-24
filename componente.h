@@ -15,6 +15,7 @@ public:
 
     QString print() const override;
     double getPrice() const override;
+    QString getLabels() const override;
 
 
 private:
