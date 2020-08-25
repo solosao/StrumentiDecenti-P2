@@ -4,6 +4,7 @@
 #include "batteria.h"
 #include "chitarra.h"
 #include "chitarraelettrica.h"
+#include "chitarraacustica.h"
 #include "tastiera.h"
 #include "componentewidget.h"
 #include <QDialogButtonBox>
@@ -25,8 +26,12 @@ AddDialog::AddDialog(QWidget *parent) :
     layoutScroll = new QVBoxLayout();
     widget->setLayout( layoutScroll );
 
-
+    //init ComboBox
+    ui->legnoComboBox->addItems(Chitarra::tipiLegno);
+    ui->cordeComboBox->addItems(Chitarra::tipiCorde);
     ui->ampComboBox->addItems(ChitarraElettrica::tipiAmp);
+    ui->pickupComboBox->addItems(ChitarraElettrica::tipiPickup);
+    ui->corpoComboBox->addItems(ChitarraAcustica::tipiCorpo);
 
 }
 
@@ -37,19 +42,10 @@ AddDialog::~AddDialog()
 
 Oggetto *AddDialog::buildItem()
 {
-//    Componente* prova = new Componente("Piatto Sabian", 16.20, Componente::piatto);
-//    Componente* tamb = new Componente("timpano", 100.8, Componente::tamburo);
-
-//    Batteria* vera = new Batteria("Nintendo", 3);
-//    vera->addComponente(prova);
-//    vera->addComponente(tamb);
-
-//    return vera;
-
     Oggetto* ret = Q_NULLPTR;
 
     if(ui->batteriaRadioButton->isChecked()) {
-        Batteria* item = new Batteria(ui->nameLineEdit->text(), ui->priceSpinBox->value());
+        Batteria* item = new Batteria(ui->nameLineEdit->text(), ui->priceSpinBox->value(), ui->custodiaCheckBox->isChecked());
         for (int i=0; i < layoutScroll->count(); ++i){
             if(ComponenteWidget* temp = dynamic_cast<ComponenteWidget*>(layoutScroll->itemAt(i)->widget())){
                 item->addComponente(new Componente(temp->getNome(), temp->getPrezzo(), temp->getTipo()));

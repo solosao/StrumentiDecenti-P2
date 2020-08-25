@@ -18,6 +18,9 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QFormLayout" name="formLayout">
+       <property name="bottomMargin">
+        <number>50</number>
+       </property>
        <item row="1" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
@@ -72,6 +75,20 @@
        </item>
        <item row="1" column="1">
         <widget class="QLineEdit" name="nameLineEdit"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Custodia</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="custodiaCheckBox">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -178,7 +195,7 @@
            <widget class="QComboBox" name="legnoComboBox"/>
           </item>
           <item row="2" column="1">
-           <widget class="QComboBox" name="comboBox_2"/>
+           <widget class="QComboBox" name="cordeComboBox"/>
           </item>
           <item row="0" column="1">
            <widget class="QSpinBox" name="spinBox"/>
@@ -212,12 +229,12 @@
            <item row="1" column="0">
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Tipo</string>
+              <string>Corpo</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QComboBox" name="comboBox_3"/>
+            <widget class="QComboBox" name="corpoComboBox"/>
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_9">
@@ -227,7 +244,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QCheckBox" name="checkBox_cutaway">
+            <widget class="QCheckBox" name="cutawayCheckBox">
              <property name="text">
               <string/>
              </property>
@@ -241,7 +258,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QCheckBox" name="checkBox_tuner">
+            <widget class="QCheckBox" name="tunerCheckBox">
              <property name="text">
               <string/>
              </property>
@@ -255,7 +272,7 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QCheckBox" name="checkBox_eq">
+            <widget class="QCheckBox" name="eqCheckBox">
              <property name="text">
               <string/>
              </property>
@@ -282,7 +299,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QComboBox" name="comboBox_4"/>
+            <widget class="QComboBox" name="pickupComboBox"/>
            </item>
            <item row="1" column="1">
             <widget class="QComboBox" name="ampComboBox"/>

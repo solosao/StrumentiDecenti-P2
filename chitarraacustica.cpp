@@ -1,6 +1,11 @@
 #include "chitarraacustica.h"
+#include <QStringList>
 
-const QString tipiCorpi[] = {"acustico", "semiacustico", "classico", "banjo"};
+QStringList ChitarraAcustica::tipiCorpo = QStringList()
+        << "acustico"
+        << "semiacustico"
+        << "classico"
+        << "banjo";
 
 ChitarraAcustica::ChitarraAcustica(
         QString nome,
@@ -56,7 +61,7 @@ double ChitarraAcustica::getPrice() const
 
 QString ChitarraAcustica::print() const
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpi[getCorpo()];
+    QString ret = getNome() + QString::number(getPrice(), 'f', 2) + Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpo[getCorpo()];
     return ret;
 }
 
