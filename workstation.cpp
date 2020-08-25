@@ -23,13 +23,18 @@ Workstation::~Workstation()
 
 }
 
-double Workstation::getPrice()
+double Workstation::getPrice() const
 {
-    return dynamic_cast<Oggetto*>(this)->getPrice() + 25*getGambe()+20*getPedale()+100*getCase();
+    return getInitPrice() + 25*getGambe()+20*getPedale()+100*getCase();
 //    return 0;
 }
 
-QString Workstation::print()
+QString Workstation::print() const
 {
     return QString(Q_FUNC_INFO);
+}
+
+QString Workstation::getLabels() const
+{
+    return "Custodia|Tasti|Gambe|Pedale|Pesatura|Polifonia";
 }

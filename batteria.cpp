@@ -18,9 +18,9 @@ Batteria::~Batteria()
     }
 }
 
-QString Batteria::print()
+QString Batteria::print() const
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2);
+    QString ret = getNome()+ '|' + QString::number(getPrice(), 'f', 2);
 
     //iteratori
     for(auto iter = _componenti.begin(); iter != _componenti.end(); iter++) {
@@ -33,13 +33,18 @@ QString Batteria::print()
     return ret;
 }
 
-double Batteria::getPrice()
+double Batteria::getPrice() const
 {
     double price = getInitPrice();
     for(auto iter = _componenti.begin(); iter != _componenti.end(); iter++) {
         price += (*iter)->getPrice();
     }
     return price;
+}
+
+QString Batteria::getLabels() const
+{
+    return "";
 }
 
 void Batteria::addComponente(Componente* toadd)

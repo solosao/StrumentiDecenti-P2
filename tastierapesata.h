@@ -8,7 +8,7 @@ class TastieraPesata : virtual public Tastiera
 {
 public:
     enum tipoPesatura {
-        semipasata,
+        semipesata,
         pesata,
         realwood
     };
@@ -29,7 +29,7 @@ public:
     tipoPesatura getPesatura() const;
     void setPedale(bool pedale);
 
-protected:
+private:
     bool _pedale;
     const tipoPesatura _pesatura;
 

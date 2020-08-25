@@ -22,7 +22,7 @@ Piano::~Piano()
 
 }
 
-QString Piano::print()
+QString Piano::print() const
 {
     QString ret = getNome() + QString::number(getPrice(), 'f', 2)+ QString::number(getTasti()) + tipiPesatura[getPesatura()];
     if(getPedale()) ret.append("pedale");
@@ -30,7 +30,12 @@ QString Piano::print()
     return ret;
 }
 
-double Piano::getPrice()
+double Piano::getPrice() const
 {
     return getInitPrice()+getPedale()*30+getGambe()*100;
+}
+
+QString Piano::getLabels() const
+{
+    return "Custodia|Tasti|Gambe|Pedale|Pesatura";
 }

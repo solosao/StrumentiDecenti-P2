@@ -11,8 +11,9 @@ public:
     Batteria(QString nome, double prezzo, bool custodia = false);
     ~Batteria();
 
-    virtual QString print();
-    virtual double getPrice();
+    QString print() const override;
+    double getPrice() const override;
+    QString getLabels() const override;
     void addComponente(Componente*);
     void removeComponente(int);
 

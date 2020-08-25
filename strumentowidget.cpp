@@ -21,3 +21,14 @@ StrumentoWidget::~StrumentoWidget()
 {
     delete ui;
 }
+
+void StrumentoWidget::on_detailPushButton_pressed()
+{
+    DetailDialog dialog(oggetto, this);
+    dialog.exec();
+}
+
+void StrumentoWidget::on_deletePushButton_pressed()
+{
+
+}

@@ -32,8 +32,9 @@ public:
     bool getEq() const;
     bool getCutaway() const;
 
-    virtual double getPrice();
-    virtual QString print();
+    double getPrice() const override;
+    QString print() const override;
+    QString getLabels() const override;
 
 
 private:

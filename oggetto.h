@@ -11,8 +11,9 @@ public:
     QString getNome() const;
 
     // metodi polimorfi
-    virtual QString print() = 0;
-    virtual double getPrice() = 0;
+    virtual QString print() const = 0;
+    virtual double getPrice() const = 0;
+    virtual QString getLabels() const = 0;
     double getInitPrice() const;
 
 private:

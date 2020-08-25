@@ -5,6 +5,7 @@
 #include <QPushButton>
 
 #include <oggetto.h>
+#include "detaildialog.h"
 
 namespace Ui {
 class StrumentoWidget;
@@ -17,6 +18,10 @@ class StrumentoWidget : public QWidget
 public:
     explicit StrumentoWidget(Oggetto *oggetto, QWidget *parent = nullptr);
     ~StrumentoWidget();
+
+public slots:
+    void on_detailPushButton_pressed();
+    void on_deletePushButton_pressed();
 
 private:
     Ui::StrumentoWidget *ui;
