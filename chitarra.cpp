@@ -1,6 +1,15 @@
 #include "chitarra.h"
-const QString Chitarra::tipiLegno[] = {"acero", "mogano", "frassino", "ciliegio"};
-const QString Chitarra::tipiCorde[] = {"sottili", "spesse", "premium"};
+#include <QStringList>
+
+QStringList Chitarra::tipiLegno = QStringList()
+        << "acero"
+        << "mogano"
+        << "frassino"
+        << "ciliegio";
+QStringList Chitarra::tipiCorde = QStringList()
+        << "sottili"
+        << "spesse"
+        << "premium";
 
 
 Chitarra::Chitarra(

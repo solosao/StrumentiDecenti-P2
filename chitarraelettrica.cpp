@@ -1,11 +1,6 @@
 #include "chitarraelettrica.h"
 #include <QDebug>
 
-//QString list const
-
-//const QString ChitarraElettrica::tipiAmp[] = {"nessuno", "piccolo", "medio", "grande", "vintage"};
-//const QString ChitarraElettrica::tipiPickup[] = {"humbucker", "singlecoil", "p90"};
-
 QStringList ChitarraElettrica::tipiAmp = QStringList()
         << "nessuno"
         << "piccolo"
@@ -14,11 +9,9 @@ QStringList ChitarraElettrica::tipiAmp = QStringList()
         << "vintage";
 
 QStringList ChitarraElettrica::tipiPickup = QStringList()
-        << "nessuno"
-        << "piccolo"
-        << "medio"
-        << "grande"
-        << "vintage";
+        << "humbucker"
+        << "singlecoil"
+        << "p90";
 
 
 ChitarraElettrica::ChitarraElettrica(

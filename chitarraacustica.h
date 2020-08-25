@@ -13,7 +13,7 @@ public:
         banjo
     };
 
-    static const QString tipiCorpo[];
+    static QStringList tipiCorpo;
 
     ChitarraAcustica(QString nome,
                      double prezzo,
