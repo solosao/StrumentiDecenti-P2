@@ -65,7 +65,7 @@ double ChitarraElettrica::getPrice() const
 
 QString ChitarraElettrica::print() const
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2) + tipiAmp[getAmp()]+tipiPickup[getPickup()]+tipiCorde[getCorde()]+tipiLegno[getLegno()];
+    QString ret = "chitarra elettrica|"+getNome()+"|" + QString::number(getPrice(), 'f', 2)+"|" + tipiAmp[getAmp()]+"|"+tipiPickup[getPickup()]+"|"+tipiCorde[getCorde()]+"|"+tipiLegno[getLegno()];
     return ret;
 }
 

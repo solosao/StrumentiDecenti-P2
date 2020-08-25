@@ -20,11 +20,12 @@ Batteria::~Batteria()
 
 QString Batteria::print() const
 {
-    QString ret = getNome()+ '|' + QString::number(getPrice(), 'f', 2);
+    QString ret = "batteria|" + getNome()+ '|' + QString::number(getPrice(), 'f', 2);
+    if(getCase()) ret.append("|Case"); else ret.append("|NoCase");
 
     //iteratori
     for(auto iter = _componenti.begin(); iter != _componenti.end(); iter++) {
-        ret.append((*iter)->print());
+        ret.append("|"+(*iter)->print());
     }
 //    for(int i = 0; i < _componenti.size(); ++i) {
 //        ret.append(_componenti[i]->print());
