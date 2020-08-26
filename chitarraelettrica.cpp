@@ -58,11 +58,15 @@ double ChitarraElettrica::getPrice() const
 
 QString ChitarraElettrica::print() const
 {
-    QString ret = "chitarra elettrica|"+getNome()+"|" + QString::number(getPrice(), 'f', 2)+"|" + tipiAmp[getAmp()]+"|"+tipiPickup[getPickup()]+"|"+tipiCorde[getCorde()]+"|"+tipiLegno[getLegno()];
+    //init
+    QString ret = "ChitarraElettrica";
+    //parti di oggetto
+    ret += getNome() +"|" + QString::number(getPrice(), 'f', 2);
+    //parti di strumento
+    if(getCase()) ret.append("|Case"); else ret.append("|NoCase");
+    //parti di chitarra
+    ret += "|"+ QString::number(getScala()) +"|"+ Chitarra::tipiCorde[getCorde()] +"|"+ Chitarra::tipiLegno[getLegno()];
+    //parti di chitarra elettrica
+    ret += "|" + tipiAmp[getAmp()]+"|"+tipiPickup[getPickup()];
     return ret;
-}
-
-QString ChitarraElettrica::getLabels() const
-{
-    return "Custodia|Legno|Scala|Pickup|Amp|Corde";
 }

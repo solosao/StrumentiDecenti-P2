@@ -41,8 +41,3 @@ double Synth::getPrice() const
 {
     return getInitPrice() + getGambe()*25 + getGambe()*50;
 }
-
-QString Synth::getLabels() const
-{
-    return "Custodia|Tasti|Gambe|Polifonia|Analog";
-}
