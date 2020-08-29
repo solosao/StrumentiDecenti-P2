@@ -61,6 +61,9 @@ double ChitarraAcustica::getPrice() const
 
 QString ChitarraAcustica::print() const
 {
+
+//    QString ret = getNome() + QString::number(getPrice(), 'f', 2) /*+ Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpo[getCorpo()]*/;
+//    return ret;
     // init
     QString ret = "ChitarraAcustica|";
     // parti di oggetto

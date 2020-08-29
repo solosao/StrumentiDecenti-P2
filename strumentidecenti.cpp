@@ -85,7 +85,7 @@ void StrumentiDecenti::on_addPushButton_pressed()
     if(dialog.exec() == QDialog::Accepted) {
         qDebug()<<"OK";
         Oggetto* ret = dialog.buildItem();
-
+        qDebug()<<ret->print();
         list.append(ret);
 
         QWidget *widget = new QWidget();

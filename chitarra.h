@@ -9,16 +9,16 @@ class Chitarra : public Strumento
 {
 public:
     enum tipoLegno {
-        acero,
-        mogano,
-        frassino,
-        ciliegio
+        acero = 0,
+        mogano = 1,
+        frassino = 2,
+        ciliegio = 3
     };
 
     enum tipoCorde {
-        sottili,
-        spesse,
-        premium
+        sottili = 0,
+        spesse = 1,
+        premium = 2
     };
 
     static QStringList tipiCorde;
