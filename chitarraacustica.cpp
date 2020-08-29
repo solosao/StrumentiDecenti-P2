@@ -80,3 +80,20 @@ QString ChitarraAcustica::print() const
 
     return ret;
 }
+
+ChitarraAcustica::tipoCorpo ChitarraAcustica::corpoStringToEnum(QString input)
+{
+    tipoCorpo corpo;
+
+    if(input == "acustico") {
+        corpo = tipoCorpo::acustico;
+    } else if(input == "semiacustico") {
+        corpo = tipoCorpo::semiacustico;
+    } else if(input == "classico") {
+        corpo = tipoCorpo::classico;
+    } else if(input == "banjo") {
+        corpo = tipoCorpo::banjo;
+    }
+
+    return corpo;
+}

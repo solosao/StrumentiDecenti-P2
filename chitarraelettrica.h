@@ -43,6 +43,12 @@ public:
     double getPrice() const override;
     QString print() const override;
 
+    //ENUM UTILS
+    static tipoPickup pickupStringToEnum(QString);
+    static tipoAmp ampStringToEnum(QString);
+
+
+
 private:
     const tipoPickup _pickup;
     tipoAmp _amp;

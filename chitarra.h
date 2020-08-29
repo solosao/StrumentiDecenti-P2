@@ -37,6 +37,9 @@ public:
 
     virtual void setCorde(tipoCorde);
 
+    static tipoLegno legnoStringToEnum(QString);
+    static tipoCorde cordeStringToEnum(QString);
+
 private:
     const tipoLegno _legno;
     const int _scala;

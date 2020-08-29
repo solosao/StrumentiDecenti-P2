@@ -51,61 +51,33 @@ Oggetto *AddDialog::buildItem()
                 item->addComponente(new Componente(temp->getNome(), temp->getPrezzo(), temp->getTipo()));
             }
         }
-        ret = item;
+        return item;
     } else if(ui->chitarraRadioButton->isChecked()) {
-
-        //handle enum to string
-        Chitarra::tipoLegno legno;
-
-        if(ui->legnoComboBox->currentText() == "acero") {
-            legno = Chitarra::tipoLegno::acero;
-        } else if(ui->legnoComboBox->currentText() == "mogano") {
-            legno = Chitarra::tipoLegno::mogano;
-        } else if(ui->legnoComboBox->currentText() == "frassino") {
-            legno = Chitarra::tipoLegno::frassino;
-        } else if(ui->legnoComboBox->currentText() == "ciliegio") {
-            legno = Chitarra::tipoLegno::ciliegio;
-        }
-
-        Chitarra::tipoCorde corde;
-
-        if(ui->cordeComboBox->currentText() == "sottili") {
-            corde = Chitarra::tipoCorde::sottili;
-        } else if(ui->cordeComboBox->currentText() == "spesse") {
-            corde = Chitarra::tipoCorde::spesse;
-        } else if(ui->cordeComboBox->currentText() == "premium") {
-            corde = Chitarra::tipoCorde::premium;
-        }
 
         if(ui->acusticaRadioButton->isChecked()) {
 
-            //handle enum to string
-            ChitarraAcustica::tipoCorpo corpo;
-
-            if(ui->corpoComboBox->currentText() == "acustico") {
-                corpo = ChitarraAcustica::tipoCorpo::acustico;
-            } else if(ui->corpoComboBox->currentText() == "semiacustico") {
-                corpo = ChitarraAcustica::tipoCorpo::semiacustico;
-            } else if(ui->corpoComboBox->currentText() == "classico") {
-                corpo = ChitarraAcustica::tipoCorpo::classico;
-            } else if(ui->corpoComboBox->currentText() == "banjo") {
-                corpo = ChitarraAcustica::tipoCorpo::banjo;
-            }
-
             ChitarraAcustica* item = new ChitarraAcustica(ui->nameLineEdit->text(),
                                                           ui->priceSpinBox->value(),
-                                                          legno,
+                                                          Chitarra::legnoStringToEnum(ui->legnoComboBox->currentText()),
                                                           ui->scalaSpinBox->value(),
-                                                          corpo,
+                                                          ChitarraAcustica::corpoStringToEnum(ui->corpoComboBox->currentText()),
                                                           ui->tunerCheckBox->isChecked(),
                                                           ui->eqCheckBox->isChecked(),
                                                           ui->cutawayCheckBox->isChecked(),
-                                                          corde,
+                                                          Chitarra::cordeStringToEnum(ui->cordeComboBox->currentText()),
                                                           ui->custodiaCheckBox->isChecked());
 
-            ret = item;
+            return item;
         } else if (ui->elettricaRadioButton->isChecked()) {
-
+            ChitarraElettrica* item = new ChitarraElettrica(ui->nameLineEdit->text(),
+                                                            ui->priceSpinBox->value(),
+                                                            Chitarra::legnoStringToEnum(ui->legnoComboBox->currentText()),
+                                                            ui->scalaSpinBox->value(),
+                                                            ChitarraElettrica::pickupStringToEnum(ui->pickupComboBox->currentText()),
+                                                            ChitarraElettrica::ampStringToEnum(ui->ampComboBox->currentText()),
+                                                            Chitarra::cordeStringToEnum(ui->cordeComboBox->currentText()),
+                                                            ui->custodiaCheckBox->isChecked());
+        return item;
         } else {
             // error
         }
@@ -114,10 +86,6 @@ Oggetto *AddDialog::buildItem()
     } else {
         // error
     }
-
-
-
-    return ret;
 
 }
 

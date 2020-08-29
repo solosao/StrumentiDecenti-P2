@@ -70,3 +70,33 @@ QString ChitarraElettrica::print() const
     ret += "|" + tipiAmp[getAmp()]+"|"+tipiPickup[getPickup()];
     return ret;
 }
+
+ChitarraElettrica::tipoPickup ChitarraElettrica::pickupStringToEnum(QString input)
+{
+    tipoPickup pickup;
+    if(input == "humbucker") {
+        pickup = tipoPickup::humbucker;
+    } else if(input == "singlecoil") {
+        pickup = tipoPickup::singlecoil;
+    } else if(input == "p90") {
+        pickup = tipoPickup::p90;
+    }
+    return pickup;
+
+}
+
+ChitarraElettrica::tipoAmp ChitarraElettrica::ampStringToEnum(QString input)
+{
+    tipoAmp amp;
+    if(input == "nessuno") {
+        amp = tipoAmp::nessuno;
+    } else if(input == "piccolo") {
+        amp = tipoAmp::piccolo;
+    } else if(input == "medio") {
+        amp = tipoAmp::medio;
+    } else if(input == "grande") {
+        amp = tipoAmp::grande;
+    } else if(input == "vintage") {
+        amp = tipoAmp::vintage;
+    }
+}

@@ -35,6 +35,8 @@ public:
     double getPrice() const override;
     QString print() const override;
 
+    //ENUM TOOLS
+    static tipoCorpo corpoStringToEnum(QString);
 
 private:
     const tipoCorpo _corpo;
