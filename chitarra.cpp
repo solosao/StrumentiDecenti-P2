@@ -51,3 +51,35 @@ void Chitarra::setCorde(Chitarra::tipoCorde corde)
 {
     _corde = corde;
 }
+
+Chitarra::tipoLegno Chitarra::legnoStringToEnum(QString input)
+{
+    Chitarra::tipoLegno legno;
+
+    if(input == "acero") {
+        legno = Chitarra::tipoLegno::acero;
+    } else if(input == "mogano") {
+        legno = Chitarra::tipoLegno::mogano;
+    } else if(input == "frassino") {
+        legno = Chitarra::tipoLegno::frassino;
+    } else if(input == "ciliegio") {
+        legno = Chitarra::tipoLegno::ciliegio;
+    }
+
+    return legno;
+}
+
+Chitarra::tipoCorde Chitarra::cordeStringToEnum(QString input)
+{
+    Chitarra::tipoCorde corde;
+
+    if(input == "sottili") {
+        corde = Chitarra::tipoCorde::sottili;
+    } else if(input == "spesse") {
+        corde = Chitarra::tipoCorde::spesse;
+    } else if(input == "premium") {
+        corde = Chitarra::tipoCorde::premium;
+    }
+
+    return corde;
+}
