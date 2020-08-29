@@ -72,7 +72,7 @@ QString ChitarraAcustica::print() const
     //parti di chitarra acustica
     ret += "|" + tipiCorpo[getCorpo()];
     if(getTuner()) ret.append("|Tuner"); else ret.append("|NoTuner");
-    if(getEq()) ret.append("|Eqr"); else ret.append("|NoEq");
+    if(getEq()) ret.append("|Eq"); else ret.append("|NoEq");
     if(getCutaway()) ret.append("|Cutaway"); else ret.append("|NoCutaway");
 
     return ret;

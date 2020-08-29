@@ -2,6 +2,8 @@
 #define CHITARRA_H
 
 #include "strumento.h"
+#include <QStringList>
+
 
 class Chitarra : public Strumento
 {

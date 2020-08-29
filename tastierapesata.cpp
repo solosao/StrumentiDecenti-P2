@@ -1,6 +1,11 @@
 #include "tastierapesata.h"
 
-const QString TastieraPesata::tipiPesatura[] = {"semipesata", "pesata", "realwood"};
+
+QStringList TastieraPesata::tipiPesatura = QStringList()
+    << "semipesata"
+    << "pesata"
+    << "realwood";
+
 
 TastieraPesata::TastieraPesata(
         QString nome,

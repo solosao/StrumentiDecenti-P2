@@ -32,6 +32,31 @@ Componente::tipoScelta ComponenteWidget::getTipo()
     }
 }
 
+void ComponenteWidget::setNome(QString name)
+{
+    ui->nameLineEdit->setText(name);
+}
+
+void ComponenteWidget::setPrezzo(double prezzo)
+{
+    ui->priceSpinBox->setValue(prezzo);
+}
+
+void ComponenteWidget::setTipo(QString tipo)
+{
+    ui->piattoRadioButton->setChecked(tipo == "Piatto");
+    ui->tamburoRadioButton->setChecked(tipo == "Tamburo");
+}
+
+void ComponenteWidget::editableValues(bool b)
+{
+    ui->nameLineEdit->setEnabled(b);
+    ui->priceSpinBox->setEnabled(b);
+    ui->piattoRadioButton->setEnabled(b);
+    ui->tamburoRadioButton->setEnabled(b);
+    ui->deletePushButton->setVisible(b);
+}
+
 void ComponenteWidget::on_deletePushButton_released()
 {
     deleteLater();
