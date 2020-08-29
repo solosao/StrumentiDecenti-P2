@@ -13,7 +13,6 @@ public:
 
     QString print() const override;
     double getPrice() const override;
-    QString getLabels() const override;
     void addComponente(Componente*);
     void removeComponente(int);
 

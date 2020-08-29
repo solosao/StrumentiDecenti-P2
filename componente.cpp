@@ -24,15 +24,10 @@ QString Componente::print() const
         case tamburo: tipo = "TAMBURO"; break;
     }
 
-    return getNome() + QString::number(getPrice(), 'f', 2) + tipo;
+    return getNome()+"|" + QString::number(getPrice(), 'f', 2)+"|" + tipo;
 }
 
 double Componente::getPrice() const
 {
     return getInitPrice();
-}
-
-QString Componente::getLabels() const
-{
-    return "Tipo";
 }

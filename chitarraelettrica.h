@@ -42,7 +42,6 @@ public:
     void setAmp(tipoAmp);
     double getPrice() const override;
     QString print() const override;
-    QString getLabels() const override;
 
 private:
     const tipoPickup _pickup;

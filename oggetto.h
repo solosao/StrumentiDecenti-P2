@@ -1,7 +1,7 @@
 #ifndef OGGETTO_H
 #define OGGETTO_H
 #include <QString>
-
+#include <typeinfo>
 
 class Oggetto {
 public:
@@ -13,7 +13,6 @@ public:
     // metodi polimorfi
     virtual QString print() const = 0;
     virtual double getPrice() const = 0;
-    virtual QString getLabels() const = 0;
     double getInitPrice() const;
 
 private:

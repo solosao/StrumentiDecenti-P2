@@ -61,11 +61,22 @@ double ChitarraAcustica::getPrice() const
 
 QString ChitarraAcustica::print() const
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2) /*+ Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpo[getCorpo()]*/;
-    return ret;
-}
 
-QString ChitarraAcustica::getLabels() const
-{
-    return "Custodia|Legno|Scala|Corpo|Tuner|Eq|Cutaway|Corde";
+//    QString ret = getNome() + QString::number(getPrice(), 'f', 2) /*+ Chitarra::tipiCorde[getCorde()] + Chitarra::tipiLegno[getLegno()] + tipiCorpo[getCorpo()]*/;
+//    return ret;
+    // init
+    QString ret = "ChitarraAcustica|";
+    // parti di oggetto
+    ret += getNome() +"|" + QString::number(getPrice(), 'f', 2);
+    //parti di strumento
+    if(getCase()) ret.append("|Case"); else ret.append("|NoCase");
+    //parti di chitarra
+    ret += "|"+ QString::number(getScala()) +"|"+ Chitarra::tipiCorde[getCorde()] +"|"+ Chitarra::tipiLegno[getLegno()];
+    //parti di chitarra acustica
+    ret += "|" + tipiCorpo[getCorpo()];
+    if(getTuner()) ret.append("|Tuner"); else ret.append("|NoTuner");
+    if(getEq()) ret.append("|Eqr"); else ret.append("|NoEq");
+    if(getCutaway()) ret.append("|Cutaway"); else ret.append("|NoCutaway");
+
+    return ret;
 }

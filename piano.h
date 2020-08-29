@@ -11,7 +11,7 @@ public:
 
     QString print() const override;
     double getPrice() const override;
-    QString getLabels() const override;
+
 };
 
 #endif // PIANO_H
