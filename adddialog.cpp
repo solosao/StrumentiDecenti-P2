@@ -69,11 +69,11 @@ Oggetto *AddDialog::buildItem()
 
         Chitarra::tipoCorde corde;
 
-        if(ui->legnoComboBox->currentText() == "sottili") {
+        if(ui->cordeComboBox->currentText() == "sottili") {
             corde = Chitarra::tipoCorde::sottili;
-        } else if(ui->legnoComboBox->currentText() == "spesse") {
+        } else if(ui->cordeComboBox->currentText() == "spesse") {
             corde = Chitarra::tipoCorde::spesse;
-        } else if(ui->legnoComboBox->currentText() == "premium") {
+        } else if(ui->cordeComboBox->currentText() == "premium") {
             corde = Chitarra::tipoCorde::premium;
         }
 
@@ -103,8 +103,6 @@ Oggetto *AddDialog::buildItem()
                                                           corde,
                                                           ui->custodiaCheckBox->isChecked());
 
-          qDebug()<<item<<"acustica";
-          qDebug()<<item->print();
             ret = item;
         } else if (ui->elettricaRadioButton->isChecked()) {
 
