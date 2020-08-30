@@ -63,16 +63,17 @@ Oggetto *AddDialog::buildItem()
 
         if(ui->acusticaRadioButton->isChecked()) {
 
-            ChitarraAcustica* item = new ChitarraAcustica(ui->nameLineEdit->text(),
-                                                          ui->priceSpinBox->value(),
-                                                          Chitarra::legnoStringToEnum(ui->legnoComboBox->currentText()),
-                                                          ui->scalaSpinBox->value(),
-                                                          ChitarraAcustica::corpoStringToEnum(ui->corpoComboBox->currentText()),
-                                                          ui->tunerCheckBox->isChecked(),
-                                                          ui->eqCheckBox->isChecked(),
-                                                          ui->cutawayCheckBox->isChecked(),
-                                                          Chitarra::cordeStringToEnum(ui->cordeComboBox->currentText()),
-                                                          ui->custodiaCheckBox->isChecked());
+            ChitarraAcustica* item = new ChitarraAcustica(
+                        ui->nameLineEdit->text(),
+                        ui->priceSpinBox->value(),
+                        Chitarra::legnoStringToEnum(ui->legnoComboBox->currentText()),
+                        ui->scalaSpinBox->value(),
+                        ChitarraAcustica::corpoStringToEnum(ui->corpoComboBox->currentText()),
+                        ui->tunerCheckBox->isChecked(),
+                        ui->eqCheckBox->isChecked(),
+                        ui->cutawayCheckBox->isChecked(),
+                        Chitarra::cordeStringToEnum(ui->cordeComboBox->currentText()),
+                        ui->custodiaCheckBox->isChecked());
 
             return item;
         } else if (ui->elettricaRadioButton->isChecked()) {
@@ -87,6 +88,8 @@ Oggetto *AddDialog::buildItem()
         return item;
         } else {
             // error
+            qDebug()<<"error";
+            return NULL;
         }
     } else if(ui->tastieraRadioButton->isChecked()) {
         if(ui->pianoRadioButton->isChecked()) {
@@ -118,9 +121,13 @@ Oggetto *AddDialog::buildItem()
             return item;
         } else {
             //error
+            qDebug()<<"error";
+            return NULL;
         }
     } else {
         // error
+        qDebug()<<"error";
+        return NULL;
     }
 
 }

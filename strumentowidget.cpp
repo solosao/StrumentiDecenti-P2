@@ -30,5 +30,5 @@ void StrumentoWidget::on_detailPushButton_pressed()
 
 void StrumentoWidget::on_deletePushButton_pressed()
 {
-
+    emit deleteRequest();
 }

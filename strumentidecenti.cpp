@@ -20,10 +20,20 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
 
     //inizializzo view
     syncBoxed();
+    QWidget *widget = new QWidget();
+    ui->scrollArea->setWidget( widget );
+    ui->scrollArea->setWidgetResizable(true);
+
+    layoutScroll = new QVBoxLayout();
+    widget->setLayout( layoutScroll );
+
+    verticalSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 }
 
 StrumentiDecenti::~StrumentiDecenti()
 {
+    delete layoutScroll;
+    delete verticalSpacer;
     delete ui;
 }
 
@@ -86,25 +96,16 @@ void StrumentiDecenti::on_addPushButton_pressed()
         qDebug()<<"OK";
         Oggetto* ret = dialog.buildItem();
         qDebug()<<ret->print();
-        list.append(ret);
 
-        QWidget *widget = new QWidget();
-        ui->scrollArea->setWidget( widget );
-        ui->scrollArea->setWidgetResizable(true);
+        layoutScroll->removeItem(verticalSpacer);
 
-        QVBoxLayout *layout = new QVBoxLayout();
-        widget->setLayout( layout );
+        StrumentoWidget* nuovoOggetto = new StrumentoWidget(ret, this);
+        connect(nuovoOggetto, &StrumentoWidget::deleteRequest, this, &StrumentiDecenti::deleteStrumento);
+        layoutScroll->addWidget( nuovoOggetto );
 
-        foreach(auto &x,list) {
-            qDebug()<<x->print();
-            StrumentoWidget* nuovoOggetto = new StrumentoWidget(x, this);
-            layout->addWidget( nuovoOggetto );
-        }
+        list.insert(nuovoOggetto, ret);
 
-        //add spacer
-        QSpacerItem* verticalSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        layout->addItem(verticalSpacer);
+        layoutScroll->addItem(verticalSpacer);
     }
 }
 
@@ -114,5 +115,17 @@ void StrumentiDecenti::syncBoxed()
     ui->tastieraGroupBox->setVisible(ui->tastieraCheckBox->isChecked());
 
     ui->filtriGroupBox->setVisible(ui->chitarraCheckBox->isChecked() || ui->tastieraCheckBox->isChecked());
+}
+
+void StrumentiDecenti::deleteStrumento()
+{
+    if(StrumentoWidget* temp = dynamic_cast<StrumentoWidget*>(sender())) {
+        if(list.contains(temp)) {
+            delete list[temp];
+            list.remove(temp);
+            temp->deleteLater();
+        }
+    }
+
 }
 

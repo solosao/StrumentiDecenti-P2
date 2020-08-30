@@ -31,9 +31,10 @@ private:
     QPushButton *del;
     QPushButton *edit;
 
-    signals:
+signals:
     void removeOggetto(Oggetto*);
     void editOggetto(Oggetto*);
+    void deleteRequest();
 };
 
 #endif // STRUMENTOWIDGET_H

@@ -2,8 +2,11 @@
 #define STRUMENTIDECENTI_H
 
 #include <QMainWindow>
-#include <QList>
+#include <QMap>
+#include <QVBoxLayout>
+
 #include "strumento.h"
+#include "strumentowidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StrumentiDecenti; }
@@ -32,6 +35,11 @@ private:
     Ui::StrumentiDecenti *ui;
     void syncBoxed();
 
-    QList<Oggetto*> list;
+    Q_SLOT void deleteStrumento();
+
+    QVBoxLayout* layoutScroll;
+    QSpacerItem* verticalSpacer;
+
+    QMap<StrumentoWidget*, Oggetto*> list;
 };
 #endif // STRUMENTIDECENTI_H
