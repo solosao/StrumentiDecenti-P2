@@ -89,6 +89,25 @@ Oggetto *AddDialog::buildItem()
 
 }
 
+void AddDialog::showOggetto(Oggetto *ogg)
+{
+    QStringList dettagli = ogg->print().split('|');
+    ui->nameLineEdit->setText(dettagli[1]);
+    ui->priceSpinBox->setValue(dettagli[2].toFloat());
+}
+
+void AddDialog::editLock()
+{
+    ui->batteriaRadioButton->setEnabled(false);
+    ui->chitarraRadioButton->setEnabled(false);
+    ui->tastieraRadioButton->setEnabled(false);
+}
+
+void AddDialog::detailLock()
+{
+    ui->buttonBox->setVisible(false);
+}
+
 void AddDialog::on_buttonBox_clicked(QAbstractButton * button)
 {
     switch (ui->buttonBox->buttonRole(button))

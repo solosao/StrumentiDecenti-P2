@@ -22,6 +22,9 @@ public:
     ~AddDialog();
 
     Oggetto* buildItem();
+    void showOggetto(Oggetto* ogg);
+    void editLock();
+    void detailLock();
 
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);

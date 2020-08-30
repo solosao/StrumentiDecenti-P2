@@ -59,7 +59,7 @@ double ChitarraElettrica::getPrice() const
 QString ChitarraElettrica::print() const
 {
     //init
-    QString ret = "ChitarraElettrica";
+    QString ret = "ChitarraElettrica|";
     //parti di oggetto
     ret += getNome() +"|" + QString::number(getPrice(), 'f', 2);
     //parti di strumento

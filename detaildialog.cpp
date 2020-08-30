@@ -55,15 +55,17 @@ DetailDialog::~DetailDialog()
 
 void DetailDialog::hideAll()
 {
-    ui->batteriaGroupBox->hide();
-    ui->chitarraGroupBox->hide();
-    ui->tastieraGroupBox->hide();
+    ui->batteriaGroupBox->setVisible(false);
+    ui->chitarraGroupBox->setVisible(false);
+    ui->tastieraGroupBox->setVisible(false);
 }
 
 void DetailDialog::hideChitarraElettrica()
 {
-    ui->labelElettrica1->hide();
-    ui->labelElettrica2->hide();
+    ui->labelElettrica1->setVisible(false);
+    ui->labelElettrica2->setVisible(false);
+    ui->ampLabel->setVisible(false);
+    ui->pickupLabel->setVisible(false);
 }
 
 void DetailDialog::hideChitarraAcustica()
@@ -72,6 +74,10 @@ void DetailDialog::hideChitarraAcustica()
     ui->labelAcustica2->hide();
     ui->labelAcustica3->hide();
     ui->labelAcustica4->hide();
+    ui->corpoLabel->hide();
+    ui->tunerCheckBox->hide();
+    ui->eqCheckBox->hide();
+    ui->cutawayCheckBox->hide();
 }
 
 void DetailDialog::hideSynth()
@@ -144,11 +150,11 @@ void DetailDialog::showChitarraAcustica(QStringList det)
     ui->legnoLabel->setText(det[6]);
     //parti di chitarra acustica
     ui->corpoLabel->setText(det[7]);
-    ui->tunerCheckBox->setTristate(det[8]=="Tuner");
+    ui->tunerCheckBox->setChecked(det[8]=="Tuner");
     ui->tunerCheckBox->setEnabled(false);
-    ui->eqCheckBox->setTristate(det[9]=="Eq");
+    ui->eqCheckBox->setChecked(det[9]=="Eq");
     ui->eqCheckBox->setEnabled(false);
-    ui->cutawayCheckBox->setTristate(det[10]=="Cutaway");
+    ui->cutawayCheckBox->setChecked(det[10]=="Cutaway");
     ui->cutawayCheckBox->setEnabled(false);
 }
 
@@ -160,10 +166,10 @@ void DetailDialog::showPiano(QStringList det)
     //parti di tastiera
     ui->tipoTastieraLabel->setText(det[0]);
     ui->tastiLabel->setText(det[4]);
-    ui->gambeCheckBox->setTristate(det[5]=="Gambe");
+    ui->gambeCheckBox->setChecked(det[5]=="Gambe");
     ui->gambeCheckBox->setEnabled(false);
     //parti di tastiera pesata
-    ui->pedaleCheckBox->setTristate(det[6]=="Pedale");
+    ui->pedaleCheckBox->setChecked(det[6]=="Pedale");
     ui->pedaleCheckBox->setEnabled(false);
     ui->pesaturaLabel->setText(det[7]);
 }
@@ -176,7 +182,7 @@ void DetailDialog::showSynth(QStringList det)
     //parti di tastiera
     ui->tipoTastieraLabel->setText(det[0]);
     ui->tastiLabel->setText(det[4]);
-    ui->gambeCheckBox->setTristate(det[5]=="Gambe");
+    ui->gambeCheckBox->setChecked(det[5]=="Gambe");
     ui->gambeCheckBox->setEnabled(false);
     //parti di absynth
     ui->polifoniaLabel->setText(det[6]);
@@ -189,12 +195,12 @@ void DetailDialog::showWorkstation(QStringList det)
     ui->tastieraGroupBox->setVisible(true);
     ui->tipoTastieraLabel->setText(det[0]);
     ui->tastiLabel->setText(det[4]);
-    ui->gambeCheckBox->setTristate(det[5]=="Gambe");
+    ui->gambeCheckBox->setChecked(det[5]=="Gambe");
     ui->gambeCheckBox->setEnabled(false);
     //parti di absynth
     ui->polifoniaLabel->setText(det[6]);
     //parti di tastiera pesata
-    ui->pedaleCheckBox->setTristate(det[7]=="Pedale");
+    ui->pedaleCheckBox->setChecked(det[7]=="Pedale");
     ui->pedaleCheckBox->setEnabled(false);
     ui->pesaturaLabel->setText(det[8]);
 

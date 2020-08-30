@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>561</width>
-    <height>674</height>
+    <height>744</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,11 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QDoubleSpinBox" name="priceSpinBox"/>
+        <widget class="QDoubleSpinBox" name="priceSpinBox">
+         <property name="maximum">
+          <double>99999.990000000005239</double>
+         </property>
+        </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_3">
@@ -198,7 +202,14 @@
            <widget class="QComboBox" name="cordeComboBox"/>
           </item>
           <item row="0" column="1">
-           <widget class="QSpinBox" name="scalaSpinBox"/>
+           <widget class="QSpinBox" name="scalaSpinBox">
+            <property name="minimum">
+             <number>200</number>
+            </property>
+            <property name="maximum">
+             <number>1001</number>
+            </property>
+           </widget>
           </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label_5">
