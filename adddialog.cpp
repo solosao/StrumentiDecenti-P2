@@ -128,8 +128,39 @@ Oggetto *AddDialog::buildItem()
 void AddDialog::showOggetto(Oggetto *ogg)
 {
     QStringList dettagli = ogg->print().split('|');
+    QString type = dettagli[0];
     ui->nameLineEdit->setText(dettagli[1]);
     ui->priceSpinBox->setValue(dettagli[2].toFloat());
+    ui->custodiaCheckBox->setChecked(dettagli[3]=="Case");
+
+    QStringList typeList = {"Batteria", "ChitarraElettrica", "ChitarraAcustica","Piano","Workstation","Synth"};
+    switch (typeList.indexOf(type)) {
+    case 0:{
+        showBatteria(dettagli);
+        break;
+    }
+    case 1:{
+        showChitarraElettrica(dettagli);
+        break;
+    }
+    case 2:{
+        showChitarraAcustica(dettagli);
+        break;
+    }
+    case 3:{
+        showPiano(dettagli);
+        break;
+    }
+    case 4:{
+        showWorkstation(dettagli);
+        break;
+    }
+    case 5:{
+        showSynth(dettagli);
+        break;
+    }
+    }
+
 }
 
 void AddDialog::editLock()
@@ -142,6 +173,46 @@ void AddDialog::editLock()
 void AddDialog::detailLock()
 {
     ui->buttonBox->setVisible(false);
+}
+
+void AddDialog::showBatteria(QStringList det)
+{
+    ui->batteriaRadioButton->setChecked(true);
+    handleRadioButtonStrumento();
+}
+
+void AddDialog::showChitarraElettrica(QStringList det)
+{
+    ui->chitarraRadioButton->setChecked(true);
+    ui->elettricaRadioButton->setChecked(true);
+    handleRadioButtonStrumento();
+    handleTipoChitarra();
+}
+
+void AddDialog::showChitarraAcustica(QStringList det)
+{
+    ui->chitarraRadioButton->setChecked(true);
+    ui->acusticaRadioButton->setChecked(true);
+    handleRadioButtonStrumento();
+    handleTipoChitarra();
+}
+
+void AddDialog::showPiano(QStringList det)
+{
+    ui->tastieraRadioButton->setChecked(true);
+    handleRadioButtonStrumento();
+}
+
+void AddDialog::showSynth(QStringList det)
+{
+    ui->tastieraRadioButton->setChecked(true);
+    handleRadioButtonStrumento();
+}
+
+void AddDialog::showWorkstation(QStringList det)
+{
+    ui->tastieraRadioButton->setChecked(true);
+    handleRadioButtonStrumento();
 }
 
 void AddDialog::on_buttonBox_clicked(QAbstractButton * button)
@@ -241,6 +312,8 @@ void AddDialog::on_synthRadioButton_clicked()
     ui->pesaturaComboBox->setVisible(false);
     ui->pedaleLabel->setVisible(false);
     ui->pedaleCheckBox->setVisible(false);
+
+
 }
 
 void AddDialog::handleRadioButtonStrumento()

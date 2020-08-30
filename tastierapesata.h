@@ -15,11 +15,10 @@ public:
     };
 
     static QStringList tipiPesatura;
-<<<<<<< HEAD
+
 
     static void initTastieraPesata();
-=======
->>>>>>> f9620f2f05d212d8ee9526b735dc48cb94035f11
+
 
     TastieraPesata(
             QString nome,

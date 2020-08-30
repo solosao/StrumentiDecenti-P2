@@ -25,7 +25,7 @@ Piano::~Piano()
 
 QString Piano::print() const
 {
-<<<<<<< HEAD
+
     //init
     QString ret = "Piano|";
     //parti di oggetto
@@ -39,11 +39,6 @@ QString Piano::print() const
     if(getPedale()) ret.append("|Pedale"); else ret.append("|NoPedale");
     ret +="|"+tipiPesatura[getPesatura()];
 
-=======
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2)+ QString::number(getTasti()) + TastieraPesata::tipiPesatura[getPesatura()];
-    if(getPedale()) ret.append("pedale");
-    if(getGambe()) ret.append("gambe");
->>>>>>> f9620f2f05d212d8ee9526b735dc48cb94035f11
     return ret;
 }
 

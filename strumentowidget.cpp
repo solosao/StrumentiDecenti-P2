@@ -33,7 +33,7 @@ void StrumentoWidget::on_deletePushButton_pressed()
 void StrumentoWidget::on_editPushButton_pressed()
 {
     AddDialog dialog(this); //this perchè è figlia della main window
-    dialog.editLock(); //i bottoni vengono lockati ma non scritti quindi per ora non e' il caso
+    //dialog.editLock(); //i bottoni vengono lockati ma non scritti quindi per ora non e' il caso
     dialog.showOggetto(oggetto);
 
     /*

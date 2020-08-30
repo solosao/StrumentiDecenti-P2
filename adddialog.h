@@ -26,6 +26,19 @@ public:
     void editLock();
     void detailLock();
 
+    void showBatteria(QStringList det);
+    void showChitarraElettrica(QStringList det);
+    void showChitarraAcustica(QStringList det);
+    void showPiano(QStringList det);
+    void showSynth(QStringList det);
+    void showWorkstation(QStringList det);
+
+    void setSynthVisible();
+    void setPianoVisible();
+    void setWorkstationVisible();
+    void setChitarraElettricaVisible();
+    void setChitarraAcusticaVisible();
+
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);
     void on_addComponentePushButton_pressed();
