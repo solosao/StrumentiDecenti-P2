@@ -6,7 +6,14 @@
 class Synth : public Absynth
 {
 public:
-    Synth(QString nome, double prezzo, bool custodia = false, int tasti = 37, bool gambe = false, int polifonia = 1, bool analog = true);
+    Synth(
+            QString nome,
+            double prezzo,
+            bool custodia = false,
+            int tasti = 37,
+            bool gambe = false,
+            int polifonia = 1,
+            bool analog = true);
     ~Synth();
 
     bool getAnalog() const;

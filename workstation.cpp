@@ -26,7 +26,6 @@ Workstation::~Workstation()
 double Workstation::getPrice() const
 {
     return getInitPrice() + 25*getGambe()+20*getPedale()+100*getCase();
-//    return 0;
 }
 
 QString Workstation::print() const

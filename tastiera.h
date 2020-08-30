@@ -7,7 +7,12 @@
 class Tastiera : virtual public Strumento
 {
 public:
-    Tastiera(QString nome, double prezzo, bool custodia = false, int tasti = 49, bool gambe = false);
+    Tastiera(
+            QString nome,
+            double prezzo,
+            bool custodia = false,
+            int tasti = 49,
+            bool gambe = false);
     ~Tastiera();
 
     int getTasti() const;

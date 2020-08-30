@@ -6,7 +6,14 @@
 class Piano : public TastieraPesata
 {
 public:
-    Piano(QString nome, double prezzo, bool custodia = false, int tasti = 88, bool gambe = false, bool pedale = true, tipoPesatura pesatura = pesata);
+    Piano(
+            QString nome,
+            double prezzo,
+            bool custodia = false,
+            int tasti = 88,
+            bool gambe = false,
+            bool pedale = true,
+            tipoPesatura pesatura = pesata);
     ~Piano();
 
     QString print() const override;
