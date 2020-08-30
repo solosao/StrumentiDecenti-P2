@@ -21,7 +21,11 @@ StrumentoWidget::~StrumentoWidget()
 
 void StrumentoWidget::on_detailPushButton_pressed()
 {
-    DetailDialog dialog(oggetto, this);
+    AddDialog dialog(this);
+    dialog.detailMode();
+    dialog.resize(400,600);
+    dialog.showOggetto(oggetto);
+
     dialog.exec();
 }
 
@@ -33,7 +37,8 @@ void StrumentoWidget::on_deletePushButton_pressed()
 void StrumentoWidget::on_editPushButton_pressed()
 {
     AddDialog dialog(this); //this perchè è figlia della main window
-    //dialog.editLock(); //i bottoni vengono lockati ma non scritti quindi per ora non e' il caso
+    dialog.editMode();
+    dialog.resize(400,600);
     dialog.showOggetto(oggetto);
 
     /*
@@ -41,8 +46,6 @@ void StrumentoWidget::on_editPushButton_pressed()
      * attendo che ritorni e controllo con enum di QDialog.
      * In questo modo la dialog è "bloccante" la mainWindow non è utilizzabile
     */
-
-
     if(dialog.exec() == QDialog::Accepted) {
         qDebug()<<"OK";
         Oggetto* ret = dialog.buildItem();

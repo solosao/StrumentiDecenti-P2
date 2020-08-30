@@ -23,8 +23,10 @@ public:
 
     Oggetto* buildItem();
     void showOggetto(Oggetto* ogg);
-    void editLock();
-    void detailLock();
+
+    void addMode();
+    void editMode();
+    void detailMode();
 
     void showBatteria(QStringList det);
     void showChitarraElettrica(QStringList det);
@@ -36,8 +38,6 @@ public:
     void setSynthVisible();
     void setPianoVisible();
     void setWorkstationVisible();
-    void setChitarraElettricaVisible();
-    void setChitarraAcusticaVisible();
 
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);
