@@ -8,12 +8,12 @@ class TastieraPesata : virtual public Tastiera
 {
 public:
     enum tipoPesatura {
-        semipesata,
-        pesata,
-        realwood
+        semipesata = 0,
+        pesata = 1,
+        realwood = 2
     };
 
-    static const QString tipiPesatura[];
+    static QStringList tipiPesatura;
 
     TastieraPesata(
             QString nome,
@@ -28,6 +28,9 @@ public:
     bool getPedale() const;
     tipoPesatura getPesatura() const;
     void setPedale(bool pedale);
+
+    //enum utils
+    static tipoPesatura pesaturaStringToEnum(QString);
 
 private:
     bool _pedale;

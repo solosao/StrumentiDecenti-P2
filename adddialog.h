@@ -35,6 +35,9 @@ private slots:
     void on_elettricaRadioButton_clicked();
 
     void on_tastieraRadioButton_clicked();
+    void on_pianoRadioButton_clicked();
+    void on_workstationRadioButton_clicked();
+    void on_synthRadioButton_clicked();
 
 private:
     Ui::AddDialog *ui;

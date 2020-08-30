@@ -1,6 +1,11 @@
 #include "tastierapesata.h"
+#include "QStringList"
 
-const QString TastieraPesata::tipiPesatura[] = {"semipesata", "pesata", "realwood"};
+
+QStringList TastieraPesata::tipiPesatura = QStringList()
+        << "semipesata"
+        << "pesata"
+        << "realwood";
 
 TastieraPesata::TastieraPesata(
         QString nome,
@@ -37,4 +42,17 @@ TastieraPesata::tipoPesatura TastieraPesata::getPesatura() const
 void TastieraPesata::setPedale(bool pedale)
 {
     _pedale = pedale;
+}
+
+TastieraPesata::tipoPesatura TastieraPesata::pesaturaStringToEnum(QString input)
+{
+    tipoPesatura pesatura;
+    if(input == "pesata") {
+        pesatura = tipoPesatura::pesata;
+    } else if(input == "semipesata") {
+        pesatura = tipoPesatura::semipesata;
+    } else if(input == "realwood") {
+        pesatura = tipoPesatura::realwood;
+    }
+    return pesatura;
 }

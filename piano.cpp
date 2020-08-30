@@ -1,5 +1,6 @@
 #include "piano.h"
-
+#include "tastierapesata.h"
+#include <QList>
 
 Piano::Piano(
         QString nome,
@@ -24,7 +25,7 @@ Piano::~Piano()
 
 QString Piano::print() const
 {
-    QString ret = getNome() + QString::number(getPrice(), 'f', 2)+ QString::number(getTasti()) + tipiPesatura[getPesatura()];
+    QString ret = getNome() + QString::number(getPrice(), 'f', 2)+ QString::number(getTasti()) + TastieraPesata::tipiPesatura[getPesatura()];
     if(getPedale()) ret.append("pedale");
     if(getGambe()) ret.append("gambe");
     return ret;
