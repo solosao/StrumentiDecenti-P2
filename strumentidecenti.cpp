@@ -85,6 +85,8 @@ void StrumentiDecenti::on_tastieraCheckBox_toggled(bool toggled)
 void StrumentiDecenti::on_addPushButton_pressed()
 {
     AddDialog dialog(this); //this perchè è figlia della main window
+    dialog.addMode();
+    dialog.resize(400,600);
 
     /*
      * apertura dialog con dialog.exec()
