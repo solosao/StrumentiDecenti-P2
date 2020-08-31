@@ -102,6 +102,7 @@ void StrumentiDecenti::on_addPushButton_pressed()
         layoutScroll->removeItem(verticalSpacer);
 
         StrumentoWidget* nuovoOggetto = new StrumentoWidget(ret, this);
+        nuovoOggetto->initStrumentoWidget(ret);
         connect(nuovoOggetto, &StrumentoWidget::deleteRequest, this, &StrumentiDecenti::deleteStrumento);
         layoutScroll->addWidget( nuovoOggetto );
 

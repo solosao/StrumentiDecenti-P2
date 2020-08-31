@@ -53,12 +53,12 @@ void StrumentoWidget::on_editPushButton_pressed()
         qDebug()<<ret->print();
     }
 
-//    initStrumentoWidget(oggetto);
+    initStrumentoWidget(oggetto);
 }
 
-//void StrumentoWidget::initStrumentoWidget(Oggetto *ogg)
-//{
-//    ui->nomeLabel->setText(ogg->getNome());
-//    QString price = QString::number(ogg->getPrice(), 'f', 2) + "€";
-//    ui->prezzoLabel->setText(price);
-//}
+void StrumentoWidget::initStrumentoWidget(Oggetto* ogg)
+{
+    ui->nomeLabel->setText(ogg->getNome());
+    QString price = QString::number(ogg->getPrice(), 'f', 2) + "€";
+    ui->prezzoLabel->setNum(ogg->getPrice());
+}

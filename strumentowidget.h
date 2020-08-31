@@ -18,6 +18,7 @@ class StrumentoWidget : public QWidget
 public:
     explicit StrumentoWidget(Oggetto *oggetto, QWidget *parent = nullptr);
     ~StrumentoWidget();
+    void initStrumentoWidget(Oggetto* ogg);
 
 public slots:
     void on_detailPushButton_pressed();
@@ -31,6 +32,7 @@ private:
 
     QPushButton *del;
     QPushButton *edit;
+
 
 signals:
 //    void initStrumentoWidget(Oggetto *ogg);
