@@ -30,10 +30,20 @@ bool Synth::getAnalog() const
 
 QString Synth::print() const
 {
-    QString ret = getNome()+QString::number(getPrice(), 'f', 2)+ QString::number(getTasti())+ QString::number(getPolifonia());
-    if(getCase()) ret.append("case");
-    if(getGambe()) ret.append("gambe");
-    if(getAnalog()) ret.append("analog");
+    //init
+    QString ret = "Synth|";
+    //parti di oggetto
+    ret += getNome() +"|" + QString::number(getPrice(), 'f', 2);
+    //parti di strumento
+    if(getCase()) ret.append("|Case"); else ret.append("|NoCase");
+    //parti di tastiera
+    ret+= "|"+QString::number(getTasti());
+    if(getGambe()) ret.append("|Gambe"); else ret.append("|NoGambe");
+    //parti di absynth
+    ret+= "|"+QString::number(getPolifonia());
+    //parti di synth
+    if(getAnalog()) ret.append("|Analog"); else ret.append("|Digital");
+
     return ret;
 }
 

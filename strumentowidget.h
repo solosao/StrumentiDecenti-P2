@@ -22,6 +22,7 @@ public:
 public slots:
     void on_detailPushButton_pressed();
     void on_deletePushButton_pressed();
+    void on_editPushButton_pressed();
 
 private:
     Ui::StrumentoWidget *ui;
@@ -32,6 +33,7 @@ private:
     QPushButton *edit;
 
 signals:
+//    void initStrumentoWidget(Oggetto *ogg);
     void removeOggetto(Oggetto*);
     void editOggetto(Oggetto*);
     void deleteRequest();

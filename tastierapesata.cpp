@@ -3,9 +3,10 @@
 
 
 QStringList TastieraPesata::tipiPesatura = QStringList()
-        << "semipesata"
-        << "pesata"
-        << "realwood";
+
+    << "semipesata"
+    << "pesata"
+    << "realwood";
 
 TastieraPesata::TastieraPesata(
         QString nome,

@@ -1,5 +1,6 @@
 #include "strumento.h"
 
+
 Strumento::Strumento(
         QString nome,
         double prezzo,

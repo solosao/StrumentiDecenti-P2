@@ -30,5 +30,20 @@ double Workstation::getPrice() const
 
 QString Workstation::print() const
 {
-    return QString(Q_FUNC_INFO);
+    //init
+    QString ret = "Workstation|";
+    //parti di oggetto
+    ret += getNome() +"|" + QString::number(getPrice(), 'f', 2);
+    //parti di strumento
+    if(getCase()) ret.append("|Case"); else ret.append("|NoCase");
+    //parti di tastiera
+    ret+= "|"+QString::number(getTasti());
+    if(getGambe()) ret.append("|Gambe"); else ret.append("|NoGambe");
+    //parti di absynth
+    ret+= "|"+QString::number(getPolifonia());
+    //parti di tastiera pesata
+    if(getPedale()) ret.append("|Pedale"); else ret.append("|NoPedale");
+    ret +="|"+tipiPesatura[getPesatura()];
+
+    return ret;
 }

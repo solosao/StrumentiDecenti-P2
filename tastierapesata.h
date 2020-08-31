@@ -2,6 +2,7 @@
 #define TASTIERAPESATA_H
 
 #include "tastiera.h"
+#include <QStringList>
 
 
 class TastieraPesata : virtual public Tastiera
@@ -14,6 +15,10 @@ public:
     };
 
     static QStringList tipiPesatura;
+
+
+    static void initTastieraPesata();
+
 
     TastieraPesata(
             QString nome,

@@ -23,6 +23,12 @@ public:
     double getPrezzo();
     Componente::tipoScelta getTipo();
 
+    void setNome(QString name);
+    void setPrezzo(double prezzo);
+    void setTipo(QString tipo);
+
+    void editableValues(bool b);
+
 public slots:
     void on_deletePushButton_released();
 

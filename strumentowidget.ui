@@ -40,7 +40,7 @@
       <widget class="Line" name="line">
        <property name="minimumSize">
         <size>
-         <width>300</width>
+         <width>200</width>
          <height>0</height>
         </size>
        </property>
@@ -67,6 +67,13 @@
     <widget class="QPushButton" name="detailPushButton">
      <property name="text">
       <string>Dettagli</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="editPushButton">
+     <property name="text">
+      <string>Modifica</string>
      </property>
     </widget>
    </item>

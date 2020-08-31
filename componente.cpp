@@ -17,14 +17,14 @@ Componente::~Componente()
 QString Componente::print() const
 { //metodo polimorfo
 
-    QString tipo;
+    QString ret;
 
     switch(_tipo) {
-        case piatto: tipo = "PIATTO"; break;
-        case tamburo: tipo = "TAMBURO"; break;
+        case piatto: ret = "Piatto|"; break;
+        case tamburo: ret = "Tamburo|"; break;
     }
 
-    return getNome()+"|" + QString::number(getPrice(), 'f', 2)+"|" + tipo;
+    return ret + getNome()+"|" + QString::number(getPrice(), 'f', 2);
 }
 
 double Componente::getPrice() const

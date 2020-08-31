@@ -1,5 +1,4 @@
 #include "chitarra.h"
-#include <QStringList>
 
 QStringList Chitarra::tipiLegno = QStringList()
         << "acero"

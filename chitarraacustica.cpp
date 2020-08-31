@@ -56,7 +56,7 @@ bool ChitarraAcustica::getCutaway() const
 double ChitarraAcustica::getPrice() const
 {
 //    int ret = _prezzo;
-    return getInitPrice() + getTuner()*50 + getEq()*20;
+    return getInitPrice() + getTuner()*50 + getEq()*20 + getCase()*20;
 }
 
 QString ChitarraAcustica::print() const
@@ -75,7 +75,7 @@ QString ChitarraAcustica::print() const
     //parti di chitarra acustica
     ret += "|" + tipiCorpo[getCorpo()];
     if(getTuner()) ret.append("|Tuner"); else ret.append("|NoTuner");
-    if(getEq()) ret.append("|Eqr"); else ret.append("|NoEq");
+    if(getEq()) ret.append("|Eq"); else ret.append("|NoEq");
     if(getCutaway()) ret.append("|Cutaway"); else ret.append("|NoCutaway");
 
     return ret;
@@ -83,9 +83,9 @@ QString ChitarraAcustica::print() const
 
 ChitarraAcustica::tipoCorpo ChitarraAcustica::corpoStringToEnum(QString input)
 {
-    tipoCorpo corpo;
+    tipoCorpo corpo = tipoCorpo(tipiCorpo.indexOf(input));
 
-    if(input == "acustico") {
+    /*if(input == "acustico") {
         corpo = tipoCorpo::acustico;
     } else if(input == "semiacustico") {
         corpo = tipoCorpo::semiacustico;
@@ -93,7 +93,7 @@ ChitarraAcustica::tipoCorpo ChitarraAcustica::corpoStringToEnum(QString input)
         corpo = tipoCorpo::classico;
     } else if(input == "banjo") {
         corpo = tipoCorpo::banjo;
-    }
+    }*/
 
     return corpo;
 }
