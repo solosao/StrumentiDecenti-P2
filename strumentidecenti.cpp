@@ -112,14 +112,7 @@ void StrumentiDecenti::on_addPushButton_pressed()
             layoutScroll->addItem(verticalSpacer);
 
         } catch (std::runtime_error& e) {
-            QDialog* err = new QDialog(this);
-            QLabel* errLabel = new QLabel(err);
-            errLabel->setText(e.what());
-            QVBoxLayout* errLayout = new QVBoxLayout();
-            errLayout->addWidget(errLabel);
-            err->setLayout(errLayout);
-            err->resize(300,100);
-            err->show();
+            dialog.errorDialog(e.what());
         }
 
 

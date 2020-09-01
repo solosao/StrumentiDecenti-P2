@@ -46,12 +46,18 @@ void StrumentoWidget::on_editPushButton_pressed()
      * attendo che ritorni e controllo con enum di QDialog.
      * In questo modo la dialog è "bloccante" la mainWindow non è utilizzabile
     */
-    if(dialog.exec() == QDialog::Accepted) {
-        qDebug()<<"OK";
-        Oggetto* ret = dialog.buildItem();
-        oggetto = ret;
-        qDebug()<<ret->print();
+    try {
+        if(dialog.exec() == QDialog::Accepted) {
+            qDebug()<<"OK";
+            Oggetto* ret = dialog.buildItem();
+            oggetto = ret;
+            qDebug()<<ret->print();
+        }
+
+    } catch (std::runtime_error& e) {
+        dialog.errorDialog(e.what());
     }
+
 
     initStrumentoWidget(oggetto);
 }

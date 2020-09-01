@@ -174,6 +174,7 @@ void AddDialog::showOggetto(Oggetto *ogg)
 
 void AddDialog::addMode()
 {
+    ui->nameLineEdit->setText("Strumento");
     ui->totalLabel->setVisible(false);
     ui->totalPriceLabel->setVisible(false);
 }
@@ -226,7 +227,7 @@ void AddDialog::detailMode()
     ui->analogCheckBox->setEnabled(false);
 }
 
-void AddDialog::showBatteria(QStringList det)
+void AddDialog::showBatteria(QStringList& det)
 {
     ui->batteriaRadioButton->setChecked(true);
     handleRadioButtonStrumento();
@@ -240,7 +241,7 @@ void AddDialog::showBatteria(QStringList det)
         componente->setPrezzo((det[i*3 + 2]).toFloat());
         componente->setTipo(det[i*3]);
 
-        componente->editableValues(ui->buttonBox->isVisible());
+        componente->editableValues(!ui->totalLabel->isVisible());
 
         layoutScroll->addWidget(componente);
 
@@ -250,11 +251,11 @@ void AddDialog::showBatteria(QStringList det)
     }
 }
 
-void AddDialog::showChitarraElettrica(QStringList det)
+void AddDialog::showChitarraElettrica(QStringList& det)
 {
     ui->chitarraRadioButton->setChecked(true);
-    ui->elettricaRadioButton->setChecked(true);
     handleRadioButtonStrumento();
+    ui->elettricaRadioButton->setChecked(true);
     handleTipoChitarra();
     //parti di chitarra
     ui->scalaSpinBox->setValue(det[4].toFloat());
@@ -265,7 +266,7 @@ void AddDialog::showChitarraElettrica(QStringList det)
     ui->pickupComboBox->setCurrentText(det[8]);
 }
 
-void AddDialog::showChitarraAcustica(QStringList det)
+void AddDialog::showChitarraAcustica(QStringList& det)
 {
     ui->chitarraRadioButton->setChecked(true);
     ui->acusticaRadioButton->setChecked(true);
@@ -282,11 +283,11 @@ void AddDialog::showChitarraAcustica(QStringList det)
     ui->cutawayCheckBox->setChecked(det[10]=="Cutaway");
 }
 
-void AddDialog::showPiano(QStringList det)
+void AddDialog::showPiano(QStringList& det)
 {
     ui->tastieraRadioButton->setChecked(true);
-    ui->pianoRadioButton->setChecked(true);
     handleRadioButtonStrumento();
+    ui->pianoRadioButton->setChecked(true);
     setPianoVisible();
     //parti di tastiera
     ui->tastiSpinBox->setValue(det[4].toInt());
@@ -296,7 +297,7 @@ void AddDialog::showPiano(QStringList det)
     ui->pesaturaComboBox->setCurrentText(det[7]);
 }
 
-void AddDialog::showSynth(QStringList det)
+void AddDialog::showSynth(QStringList& det)
 {
     ui->tastieraRadioButton->setChecked(true);
     ui->synthRadioButton->setChecked(true);
@@ -311,7 +312,7 @@ void AddDialog::showSynth(QStringList det)
     ui->analogCheckBox->setChecked(det[7]=="Analog");
 }
 
-void AddDialog::showWorkstation(QStringList det)
+void AddDialog::showWorkstation(QStringList& det)
 {
     ui->tastieraRadioButton->setChecked(true);
     ui->workstationRadioButton->setChecked(true);
@@ -367,6 +368,18 @@ void AddDialog::setWorkstationVisible()
     ui->pedaleCheckBox->setVisible(true);
 }
 
+void AddDialog::errorDialog(const char* error) const
+{
+    QDialog* err = new QDialog();
+    QLabel* errLabel = new QLabel(err);
+    errLabel->setText(error);
+    QVBoxLayout* errLayout = new QVBoxLayout();
+    errLayout->addWidget(errLabel);
+    err->setLayout(errLayout);
+    err->resize(300,100);
+    err->show();
+}
+
 void AddDialog::on_buttonBox_clicked(QAbstractButton * button)
 {
     switch (ui->buttonBox->buttonRole(button))
@@ -390,6 +403,8 @@ void DeleteComponente() {
 void AddDialog::on_addComponentePushButton_pressed()
 {
     ComponenteWidget* componente = new ComponenteWidget(this);
+    componente->setNome("Componente");
+    componente->setTipo("Piatto");
     layoutScroll->addWidget( componente );
 
     QSpacerItem* verticalSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -446,5 +461,11 @@ void AddDialog::handleRadioButtonStrumento()
 {
     ui->batteriaGroupBox->setVisible(ui->batteriaRadioButton->isChecked());
     ui->chitarraGroupBox->setVisible(ui->chitarraRadioButton->isChecked());
+    //di default la chitarra e' acustica per evitare errori
+    ui->acusticaRadioButton->setChecked(true);
+    handleTipoChitarra();
+
     ui->tastieraGroupBox->setVisible(ui->tastieraRadioButton->isChecked());
+    ui->pianoRadioButton->setChecked(true);
+    setPianoVisible();
 }

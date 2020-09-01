@@ -28,16 +28,18 @@ public:
     void editMode();
     void detailMode();
 
-    void showBatteria(QStringList det);
-    void showChitarraElettrica(QStringList det);
-    void showChitarraAcustica(QStringList det);
-    void showPiano(QStringList det);
-    void showSynth(QStringList det);
-    void showWorkstation(QStringList det);
+    void showBatteria(QStringList& det);
+    void showChitarraElettrica(QStringList& det);
+    void showChitarraAcustica(QStringList& det);
+    void showPiano(QStringList& det);
+    void showSynth(QStringList& det);
+    void showWorkstation(QStringList& det);
 
     void setSynthVisible();
     void setPianoVisible();
     void setWorkstationVisible();
+
+    void errorDialog(const char* err) const;
 
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);
