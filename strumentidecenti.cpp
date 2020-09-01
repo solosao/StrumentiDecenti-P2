@@ -95,20 +95,34 @@ void StrumentiDecenti::on_addPushButton_pressed()
     */
 
     if(dialog.exec() == QDialog::Accepted) {
-        qDebug()<<"OK";
-        Oggetto* ret = dialog.buildItem();
-        qDebug()<<ret->print();
+        try {
+            Oggetto* ret = dialog.buildItem();
+            qDebug()<<"OK";
+            qDebug()<<ret->print();
 
-        layoutScroll->removeItem(verticalSpacer);
+            layoutScroll->removeItem(verticalSpacer);
 
-        StrumentoWidget* nuovoOggetto = new StrumentoWidget(ret, this);
-        nuovoOggetto->initStrumentoWidget(ret);
-        connect(nuovoOggetto, &StrumentoWidget::deleteRequest, this, &StrumentiDecenti::deleteStrumento);
-        layoutScroll->addWidget( nuovoOggetto );
+            StrumentoWidget* nuovoOggetto = new StrumentoWidget(ret, this);
+            nuovoOggetto->initStrumentoWidget(ret);
+            connect(nuovoOggetto, &StrumentoWidget::deleteRequest, this, &StrumentiDecenti::deleteStrumento);
+            layoutScroll->addWidget( nuovoOggetto );
 
-        list.insert(nuovoOggetto, ret);
+            list.insert(nuovoOggetto, ret);
 
-        layoutScroll->addItem(verticalSpacer);
+            layoutScroll->addItem(verticalSpacer);
+
+        } catch (std::runtime_error& e) {
+            QDialog* err = new QDialog(this);
+            QLabel* errLabel = new QLabel(err);
+            errLabel->setText(e.what());
+            QVBoxLayout* errLayout = new QVBoxLayout();
+            errLayout->addWidget(errLabel);
+            err->setLayout(errLayout);
+            err->resize(300,100);
+            err->show();
+        }
+
+
     }
 }
 

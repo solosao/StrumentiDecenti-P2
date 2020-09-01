@@ -2,6 +2,7 @@
 #define OGGETTO_H
 #include <QString>
 #include <typeinfo>
+#include <exception>
 
 class Oggetto {
 public:

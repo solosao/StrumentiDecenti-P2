@@ -51,6 +51,8 @@ Oggetto *AddDialog::buildItem()
 {
 //    Oggetto* ret = Q_NULLPTR;
 
+    if(!(ui->batteriaRadioButton->isChecked() || ui->chitarraRadioButton->isChecked() ||ui->tastieraRadioButton->isChecked())) throw (std::runtime_error("Type must be selected"));
+
     if(ui->batteriaRadioButton->isChecked()) {
         Batteria* item = new Batteria(ui->nameLineEdit->text(), ui->priceSpinBox->value(), ui->custodiaCheckBox->isChecked());
         for (int i=0; i < layoutScroll->count(); ++i){
@@ -62,17 +64,6 @@ Oggetto *AddDialog::buildItem()
     } else if(ui->chitarraRadioButton->isChecked()) {
 
         if(ui->acusticaRadioButton->isChecked()) {
-            ChitarraAcustica upgradePrice = ChitarraAcustica(ui->nameLineEdit->text(),
-                                                          0,
-                                                          Chitarra::legnoStringToEnum(ui->legnoComboBox->currentText()),
-                                                          ui->scalaSpinBox->value(),
-                                                          ChitarraAcustica::corpoStringToEnum(ui->corpoComboBox->currentText()),
-                                                          ui->tunerCheckBox->isChecked(),
-                                                          ui->eqCheckBox->isChecked(),
-                                                          ui->cutawayCheckBox->isChecked(),
-                                                          Chitarra::cordeStringToEnum(ui->cordeComboBox->currentText()),
-                                                          ui->custodiaCheckBox->isChecked());
-
             ChitarraAcustica* item = new ChitarraAcustica(
                         ui->nameLineEdit->text(),
                         ui->priceSpinBox->value(),
@@ -122,14 +113,8 @@ Oggetto *AddDialog::buildItem()
                                                 ui->polifoniaSpinBox->value());
             return item;
         } else if(ui->synthRadioButton->isChecked()) {
-            Synth upgradePrice =  Synth(ui->nameLineEdit->text(),
-                                    0,
-                                    ui->custodiaCheckBox->isChecked(),
-                                    ui->tastiSpinBox->value(),
-                                    ui->gambeCheckBox->isChecked(),
-                                    ui->polifoniaSpinBox->value());
             Synth* item = new Synth(ui->nameLineEdit->text(),
-                                    ui->priceSpinBox->value() - upgradePrice.getPrice(),
+                                    ui->priceSpinBox->value(),
                                     ui->custodiaCheckBox->isChecked(),
                                     ui->tastiSpinBox->value(),
                                     ui->gambeCheckBox->isChecked(),
