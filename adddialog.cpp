@@ -51,7 +51,6 @@ Oggetto *AddDialog::buildItem()
 {
 //    Oggetto* ret = Q_NULLPTR;
 
-    if(!(ui->batteriaRadioButton->isChecked() || ui->chitarraRadioButton->isChecked() ||ui->tastieraRadioButton->isChecked())) throw (std::runtime_error("Type must be selected"));
 
     if(ui->batteriaRadioButton->isChecked()) {
         Batteria* item = new Batteria(ui->nameLineEdit->text(), ui->priceSpinBox->value(), ui->custodiaCheckBox->isChecked());
@@ -241,7 +240,7 @@ void AddDialog::showBatteria(QStringList& det)
         componente->setPrezzo((det[i*3 + 2]).toFloat());
         componente->setTipo(det[i*3]);
 
-        componente->editableValues(!ui->totalLabel->isVisible());
+        componente->editableValues(ui->nameLineEdit->isEnabled());
 
         layoutScroll->addWidget(componente);
 
@@ -378,6 +377,21 @@ void AddDialog::errorDialog(const char* error) const
     err->setLayout(errLayout);
     err->resize(300,100);
     err->show();
+}
+
+QString AddDialog::isValid() const
+{
+    if(ui->nameLineEdit->text().isEmpty()) return "Strumento senza nome";
+    if (!(ui->batteriaRadioButton->isChecked() || ui->chitarraRadioButton->isChecked() ||ui->tastieraRadioButton->isChecked())) return "tipo non selezionato";
+    if(ui->batteriaRadioButton->isChecked()) {
+        for (int i=0; i < layoutScroll->count(); ++i){
+            if(ComponenteWidget* temp = dynamic_cast<ComponenteWidget*>(layoutScroll->itemAt(i)->widget())){
+              if(temp->getNome().isEmpty()) return "Componente senza nome";
+            }
+        }
+
+    }
+    return "";
 }
 
 void AddDialog::on_buttonBox_clicked(QAbstractButton * button)

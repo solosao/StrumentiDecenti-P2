@@ -5,7 +5,7 @@
 #include <QPushButton>
 
 #include <oggetto.h>
-#include "detaildialog.h"
+
 
 namespace Ui {
 class StrumentoWidget;
@@ -29,9 +29,6 @@ private:
     Ui::StrumentoWidget *ui;
 
     Oggetto* oggetto;
-
-    QPushButton *del;
-    QPushButton *edit;
 
 
 signals:

@@ -40,6 +40,7 @@ public:
     void setWorkstationVisible();
 
     void errorDialog(const char* err) const;
+    QString isValid() const;
 
 public slots:
     void on_buttonBox_clicked(QAbstractButton * button);
@@ -63,10 +64,7 @@ private:
     void handleRadioButtonStrumento();
     void handleTipoChitarra();
 
-    unsigned int componenteList = 0;
-
     QVBoxLayout* layoutScroll;
-
 };
 
 #endif // ADDDIALOG_H

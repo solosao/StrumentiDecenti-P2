@@ -44,6 +44,7 @@ public:
     QString print() const override;
 
     //ENUM UTILS
+
     static tipoPickup pickupStringToEnum(QString);
     static tipoAmp ampStringToEnum(QString);
 

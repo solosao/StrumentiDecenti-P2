@@ -1,6 +1,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TEMPLATE = app
 
 CONFIG += c++11
 
@@ -24,7 +25,6 @@ SOURCES += \
     chitarraelettrica.cpp \
     componente.cpp \
     componentewidget.cpp \
-    detaildialog.cpp \
     main.cpp \
     oggetto.cpp \
     piano.cpp \
@@ -45,7 +45,6 @@ HEADERS += \
     chitarraelettrica.h \
     componente.h \
     componentewidget.h \
-    detaildialog.h \
     oggetto.h \
     piano.h \
     strumentidecenti.h \
@@ -59,7 +58,6 @@ HEADERS += \
 FORMS += \
     adddialog.ui \
     componentewidget.ui \
-    detaildialog.ui \
     strumentidecenti.ui \
     strumentowidget.ui
 
