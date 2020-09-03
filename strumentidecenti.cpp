@@ -150,6 +150,7 @@ void StrumentiDecenti::on_addPushButton_pressed()
 
     if(dialog.exec() == QDialog::Accepted) {
         try {
+            if(!dialog.isValid().isEmpty()) throw(std::runtime_error(dialog.isValid().toStdString()));
             Oggetto* ret = dialog.buildItem();
             qDebug()<<"OK";
             qDebug()<<ret->print();
