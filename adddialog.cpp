@@ -45,7 +45,7 @@ AddDialog::~AddDialog()
     delete ui;
 }
 
-Oggetto *AddDialog::buildItem()
+Oggetto *AddDialog::buildItem() const
 {
 //    Oggetto* ret = Q_NULLPTR;
 

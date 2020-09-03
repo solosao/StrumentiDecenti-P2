@@ -21,7 +21,7 @@ public:
     explicit AddDialog(QWidget *parent = nullptr);
     ~AddDialog();
 
-    Oggetto* buildItem();
+    Oggetto* buildItem() const;
     void showOggetto(Oggetto* ogg);
 
     void addMode();
