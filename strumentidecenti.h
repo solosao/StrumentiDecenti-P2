@@ -20,20 +20,19 @@ public:
     ~StrumentiDecenti();
 
 public slots:
-    void on_searchPushButton_pressed();
-    void onResetPressed();
     void on_priceSlider_valueChanged(int);
     void on_priceSpinBox_valueChanged(int);
 
-    void on_batteriaCheckBox_toggled(bool);
-    void on_chitarraCheckBox_toggled(bool);
-    void on_tastieraCheckBox_toggled(bool);
+    void on_searchPushButton_pressed();
+    void on_resetPushButton_pressed();
+
 
     void on_addPushButton_pressed();
 
 private:
     Ui::StrumentiDecenti *ui;
     void syncBoxed();
+    void syncTastieraFilter();
 
     Q_SLOT void deleteStrumento();
 
@@ -41,5 +40,7 @@ private:
     QSpacerItem* verticalSpacer;
 
     QMap<StrumentoWidget*, Oggetto*> list;
+
+    void searchChitarra(StrumentoWidget* const);
 };
 #endif // STRUMENTIDECENTI_H

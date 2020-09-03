@@ -5,6 +5,7 @@
 #include "chitarraelettrica.h"
 #include <QDebug>
 #include <QPair>
+#include <QString>
 #include "chitarraacustica.h"
 #include "piano.h"
 #include "adddialog.h"
@@ -16,7 +17,17 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     ui->setupUi(this);
 
     //connessione manuale al metodo da chiamare
-    connect(ui->resetPushButton, &QPushButton::pressed, this, &StrumentiDecenti::onResetPressed);
+//    connect(ui->resetPushButton, &QPushButton::pressed, this, &StrumentiDecenti::onResetPressed);
+
+    connect(ui->batteriaCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncBoxed);
+    connect(ui->chitarraCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncBoxed);
+    connect(ui->tastieraCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncBoxed);
+    connect(ui->elettricaCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncBoxed);
+    connect(ui->acusticaCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncBoxed);
+
+    connect(ui->synthCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncTastieraFilter);
+    connect(ui->workstationCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncTastieraFilter);
+    connect(ui->pianoCheckBox, &QCheckBox::toggled, this, &StrumentiDecenti::syncTastieraFilter);
 
     //inizializzo view
     syncBoxed();
@@ -28,6 +39,15 @@ StrumentiDecenti::StrumentiDecenti(QWidget *parent): QMainWindow(parent), ui(new
     widget->setLayout( layoutScroll );
 
     verticalSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+    //initComboBox
+    ui->legnoComboBox->addItems(Chitarra::tipiLegno);
+    ui->cordeComboBox->addItems(Chitarra::tipiCorde);
+    ui->ampComboBox->addItems(ChitarraElettrica::tipiAmp);
+    ui->pickupComboBox->addItems(ChitarraElettrica::tipiPickup);
+    ui->corpoComboBox->addItems(ChitarraAcustica::tipiCorpo);
+    ui->pesaturaComboBox->addItems(TastieraPesata::tipiPesatura);
+
 }
 
 StrumentiDecenti::~StrumentiDecenti()
@@ -41,17 +61,69 @@ StrumentiDecenti::~StrumentiDecenti()
 void StrumentiDecenti::on_searchPushButton_pressed()
 {
     qDebug()<<Q_FUNC_INFO;
+
+    QList<StrumentoWidget*> search = list.keys();
+
+    if(search.count() > 0) {
+        qDebug()<<search;
+
+        qDebug()<<ui->searchLineEdit->text();
+
+        foreach(auto &x,search) {
+            //Nome
+            QString nome = list[x]->getNome();
+
+            if(nome.contains(ui->searchLineEdit->text(), Qt::CaseInsensitive)) {
+                x->show();
+            } else {
+                x->hide();
+            }
+
+            //Prezzo
+
+            double price = list[x]->getPrice();
+            if(ui->priceSpinBox->value() > 0) {
+                if(price == ui->priceSpinBox->value()) {
+                    x->show();
+                } else {
+                    x->hide();
+                }
+            }
+
+
+            //Tipo
+            if(ui->chitarraCheckBox->isChecked()) {
+                if(dynamic_cast<Chitarra*>(list[x])) x->show();
+                else x->hide();
+                //search with Chitarra Filter
+                searchChitarra(x);
+            }
+            if(ui->batteriaCheckBox->isChecked()) {
+                if(dynamic_cast<Batteria*>(list[x])) x->show();
+                else x->hide();
+            }
+            if(ui->tastieraCheckBox->isChecked()) {
+                if(dynamic_cast<Tastiera*>(list[x])) x->show();
+                else x->hide();
+            }
+
+            //Custodia
+            if(ui->custodiaCheckBox->isChecked()) {
+                if(!list[x]->print().contains("NoCase")) x->show();
+                else x->hide();
+            }
+
+        }
+    }
 }
 
-//connessione manuale ->
-void StrumentiDecenti::onResetPressed()
+void StrumentiDecenti::on_resetPushButton_pressed()
 {
-    qDebug()<<Q_FUNC_INFO;
+
 }
 
 void StrumentiDecenti::on_priceSlider_valueChanged(int value)
 {
-    qDebug()<<Q_FUNC_INFO<<value; //macro per debuggare metodo chiamato
     if(ui->priceSpinBox->value() != value) {
         ui->priceSpinBox->setValue(value);
     }
@@ -62,24 +134,6 @@ void StrumentiDecenti::on_priceSpinBox_valueChanged(int value)
     if(ui->priceSlider->value() != value) {
         ui->priceSlider->setValue(value);
     }
-    qDebug()<<Q_FUNC_INFO;
-}
-
-void StrumentiDecenti::on_batteriaCheckBox_toggled(bool)
-{
-
-}
-
-void StrumentiDecenti::on_chitarraCheckBox_toggled(bool toggled)
-{
-    Q_UNUSED(toggled)
-    syncBoxed();
-}
-
-void StrumentiDecenti::on_tastieraCheckBox_toggled(bool toggled)
-{
-    Q_UNUSED(toggled)
-    syncBoxed();
 }
 
 void StrumentiDecenti::on_addPushButton_pressed()
@@ -123,8 +177,33 @@ void StrumentiDecenti::syncBoxed()
 {
     ui->chitarraGroupBox->setVisible(ui->chitarraCheckBox->isChecked());
     ui->tastieraGroupBox->setVisible(ui->tastieraCheckBox->isChecked());
+    ui->BatteriaGroupBox->setVisible(ui->batteriaCheckBox->isChecked());
+    ui->filtriGroupBox->setVisible(ui->chitarraCheckBox->isChecked() ||
+                                   ui->tastieraCheckBox->isChecked() ||
+                                   ui->batteriaCheckBox->isChecked());
 
-    ui->filtriGroupBox->setVisible(ui->chitarraCheckBox->isChecked() || ui->tastieraCheckBox->isChecked());
+    ui->acusticaGroupBox->setVisible(ui->acusticaCheckBox->isChecked());
+    ui->elettricaGroupBox->setVisible(ui->elettricaCheckBox->isChecked());
+
+    syncTastieraFilter();
+}
+
+void StrumentiDecenti::syncTastieraFilter()
+{
+    ui->polifoniaLabel->setVisible(ui->synthCheckBox->isChecked() ||
+                                   ui->workstationCheckBox->isChecked());
+    ui->polifoniaSpinBox->setVisible(ui->synthCheckBox->isChecked() ||
+                                     ui->workstationCheckBox->isChecked());
+    ui->analogLabel->setVisible(ui->synthCheckBox->isChecked());
+    ui->analogCheckBox->setVisible(ui->synthCheckBox->isChecked());
+    ui->pesaturaLabel->setVisible(ui->workstationCheckBox->isChecked() ||
+                                  ui->pianoCheckBox->isChecked());
+    ui->pesaturaComboBox->setVisible(ui->workstationCheckBox->isChecked() ||
+                                     ui->pianoCheckBox->isChecked());
+    ui->pedaleLabel->setVisible(ui->workstationCheckBox->isChecked() ||
+                                ui->pianoCheckBox->isChecked());
+    ui->pedaleCheckBox->setVisible(ui->workstationCheckBox->isChecked() ||
+                                   ui->pianoCheckBox->isChecked());
 }
 
 void StrumentiDecenti::deleteStrumento()
@@ -136,6 +215,67 @@ void StrumentiDecenti::deleteStrumento()
             temp->deleteLater();
         }
     }
+
+}
+
+void StrumentiDecenti::searchChitarra(StrumentoWidget* const search)
+{
+    if(dynamic_cast<Chitarra*>(list[search])) {
+        QStringList print = list[search]->print().split('|');
+        if(ui->scalaSpinBox->value() > 0 && ui->scalaSpinBox->value() == print[4].toFloat())
+            search->show();
+        else
+            search->hide();
+        if(ui->cordeComboBox->currentText() == print[5])
+            search->show();
+        else
+            search->hide();
+        if(ui->legnoComboBox->currentText() == print[6])
+            search->show();
+        else
+            search->hide();
+
+        if(dynamic_cast<ChitarraAcustica*>(list[search])) {
+            if(ui->corpoComboBox->currentText() == print[7])
+                search->show();
+            else
+                search->hide();
+            if(ui->tunerCheckBox->isChecked()) {
+                if(print[8] != ("NoTuner")) search->show();
+                else search->hide();
+            } else {
+                if(print[8] == ("NoTuner")) search->show();
+                else search->hide();
+            }
+
+            if(ui->eqCheckBox->isChecked()) {
+                if(print[8] != ("NoEq")) search->show();
+                else search->hide();
+            } else {
+                if(print[8] == ("NoEq")) search->show();
+                else search->hide();
+            }
+
+            if(ui->cutawayCheckBox->isChecked()) {
+                if(print[8] != ("NoCutaway")) search->show();
+                else search->hide();
+            } else {
+                if(print[8] == ("NoCutaway")) search->show();
+                else search->hide();
+            }
+        }else if(dynamic_cast<ChitarraElettrica*>(list[search])) {
+            if(ui->ampComboBox->currentText() == print[7])
+                search->show();
+            else
+                search->hide();
+
+            if(ui->pickupComboBox->currentText() == print[7])
+                search->show();
+            else
+                search->hide();
+        }
+    }
+
 
 }
 
