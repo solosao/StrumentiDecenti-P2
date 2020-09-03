@@ -1,8 +1,7 @@
 #include "strumentowidget.h"
 #include "ui_strumentowidget.h"
 #include "adddialog.h"
-#include <QDebug>
-#include "QString"
+#include <QString>
 
 StrumentoWidget::StrumentoWidget(Oggetto *oggetto, QWidget *parent)
     : QWidget(parent)
@@ -36,22 +35,15 @@ void StrumentoWidget::on_deletePushButton_pressed()
 
 void StrumentoWidget::on_editPushButton_pressed()
 {
-    AddDialog dialog(this); //this perchè è figlia della main window
+    AddDialog dialog(this);
     dialog.editMode();
     dialog.resize(400,600);
     dialog.showOggetto(oggetto);
 
-    /*
-     * apertura dialog con dialog.exec()
-     * attendo che ritorni e controllo con enum di QDialog.
-     * In questo modo la dialog è "bloccante" la mainWindow non è utilizzabile
-    */
     try {
         if(dialog.exec() == QDialog::Accepted) {
-            qDebug()<<"OK";
             Oggetto* ret = dialog.buildItem();
             oggetto = ret;
-            qDebug()<<ret->print();
         }
 
     } catch (std::runtime_error& e) {

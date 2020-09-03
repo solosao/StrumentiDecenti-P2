@@ -39,7 +39,7 @@ public:
     void setPianoVisible();
     void setWorkstationVisible();
 
-    void errorDialog(const char* err) const;
+    void errorDialog(const QString) const;
     QString isValid() const;
 
 public slots:

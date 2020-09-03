@@ -1,5 +1,4 @@
 #include "chitarraelettrica.h"
-#include <QDebug>
 
 QStringList ChitarraElettrica::tipiAmp = QStringList()
         << "nessuno"

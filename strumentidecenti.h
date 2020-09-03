@@ -42,5 +42,6 @@ private:
     QMap<StrumentoWidget*, Oggetto*> list;
 
     void searchChitarra(StrumentoWidget* const);
+    void searchTastiera(StrumentoWidget* const);
 };
 #endif // STRUMENTIDECENTI_H

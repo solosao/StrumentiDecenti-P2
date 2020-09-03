@@ -12,7 +12,6 @@
 #include "synth.h"
 #include "componentewidget.h"
 #include <QDialogButtonBox>
-#include <QDebug>
 
 AddDialog::AddDialog(QWidget *parent) :
     QDialog(parent),
@@ -38,7 +37,6 @@ AddDialog::AddDialog(QWidget *parent) :
     ui->pickupComboBox->addItems(ChitarraElettrica::tipiPickup);
     ui->corpoComboBox->addItems(ChitarraAcustica::tipiCorpo);
     ui->pesaturaComboBox->addItems(TastieraPesata::tipiPesatura);
-
 
 }
 
@@ -87,8 +85,6 @@ Oggetto *AddDialog::buildItem()
                                                             ui->custodiaCheckBox->isChecked());
         return item;
         } else {
-            // error
-            qDebug()<<"error";
             return NULL;
         }
     } else if(ui->tastieraRadioButton->isChecked()) {
@@ -120,13 +116,9 @@ Oggetto *AddDialog::buildItem()
                                     ui->polifoniaSpinBox->value());
             return item;
         } else {
-            //error
-            qDebug()<<"error";
             return NULL;
         }
     } else {
-        // error
-        qDebug()<<"error";
         return NULL;
     }
 
@@ -367,12 +359,15 @@ void AddDialog::setWorkstationVisible()
     ui->pedaleCheckBox->setVisible(true);
 }
 
-void AddDialog::errorDialog(const char* error) const
+void AddDialog::errorDialog(const QString error) const
 {
     QDialog* err = new QDialog();
+    QLabel* titleLabel = new QLabel(err);
+    titleLabel->setText("Impossibile creare strumento:");
     QLabel* errLabel = new QLabel(err);
     errLabel->setText(error);
     QVBoxLayout* errLayout = new QVBoxLayout();
+    errLayout->addWidget(titleLabel);
     errLayout->addWidget(errLabel);
     err->setLayout(errLayout);
     err->resize(300,100);
@@ -382,7 +377,7 @@ void AddDialog::errorDialog(const char* error) const
 QString AddDialog::isValid() const
 {
     if(ui->nameLineEdit->text().isEmpty()) return "Strumento senza nome";
-    if (!(ui->batteriaRadioButton->isChecked() || ui->chitarraRadioButton->isChecked() ||ui->tastieraRadioButton->isChecked())) return "tipo non selezionato";
+    if (!(ui->batteriaRadioButton->isChecked() || ui->chitarraRadioButton->isChecked() ||ui->tastieraRadioButton->isChecked())) return "Tipo non selezionato";
     if(ui->batteriaRadioButton->isChecked()) {
         for (int i=0; i < layoutScroll->count(); ++i){
             if(ComponenteWidget* temp = dynamic_cast<ComponenteWidget*>(layoutScroll->itemAt(i)->widget())){
@@ -473,12 +468,15 @@ void AddDialog::on_synthRadioButton_clicked()
 
 void AddDialog::handleRadioButtonStrumento()
 {
+
+    ui->batteriaGroupBox->setVisible(false);
+    ui->chitarraGroupBox->setVisible(false);
+    ui->tastieraGroupBox->setVisible(false);
+
     ui->batteriaGroupBox->setVisible(ui->batteriaRadioButton->isChecked());
-    ui->chitarraGroupBox->setVisible(ui->chitarraRadioButton->isChecked());
-    //di default la chitarra e' acustica per evitare errori
+    ui->chitarraGroupBox->setVisible(ui->chitarraRadioButton->isChecked());    
     ui->acusticaRadioButton->setChecked(true);
     handleTipoChitarra();
-
     ui->tastieraGroupBox->setVisible(ui->tastieraRadioButton->isChecked());
     ui->pianoRadioButton->setChecked(true);
     setPianoVisible();
